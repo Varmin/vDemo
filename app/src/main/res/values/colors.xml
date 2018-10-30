@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <!--base-->
+    <color name="base_text_black_color">#000000</color>
+    <color name="base_text_white_color">#FFFFFF</color>
+    <color name="base_text_white_gray">#999999</color>
+    <color name="base_text_white_gray_9999">#999999</color>
+    <color name="base_text_black_666666">#666666</color>
+    <color name="base_app_bg">#F3F3F3</color>
+    <color name="base_app_alert_bg">#55FF4081</color>
+    <color name="base_common_light_red_bg">#FfF3F3</color>
+    <color name="base_gray_bg_999">#999999</color>
+    <color name="base_gray_line">#dddddd</color>
+    <drawable name="base_gray_bg">#f0eff5</drawable>
+    <color name="base_red">#FF4081</color>
+    <color name="base_text_red_app">@color/base_app_bg</color>
+    <!--translate-->
+    <color name="base_gray_translate_9999">#55999999</color>
+
+    <!--view-->
+    <color name="toast_bg">#dddfe0</color>
+    <color name="filter_popup">#FCFCFC</color>
+
+    <!--normal-->
+    <color name="translate">#00000000</color>
+    <color name="title_main_bg">@color/base_app_bg</color>
+    <color name="title_main_text_color">@color/base_text_white_gray</color>
+
+
+
+
+
+
+    <!--drawable-->
+    <item name="white" type="drawable">#ffffff</item>
+    <!-- 黄色 -->
+    <item name="yellow" type="drawable">#ffff9000</item>
+    <!-- 绿色 -->
+    <item name="green" type="drawable">#ff40929C</item>
+    <!-- 黑色 -->
+    <item name="black" type="drawable">#000000</item>
+    <!-- 黑色 -->
+    <item name="qianhei" type="drawable">#3a3a3a</item>
+    <!-- 黑色 -->
+    <item name="qianhei" type="color">#3a3a3a</item>
+    <!-- 蓝色 -->
+    <item name="blue" type="drawable">#343959</item>
+    <!-- 灰色 -->
+    <item name="gray" type="drawable">#808080</item>
+    <!-- 浅灰色 -->
+    <item name="lightgray" type="drawable">#A8A8A8</item>
+    <item name="gray_balck" type="color">#2B2B2B</item>
+
+</resources>
