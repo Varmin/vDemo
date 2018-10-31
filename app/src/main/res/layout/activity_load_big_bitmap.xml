@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".others.LoadBigBitmapActivity">
     <RelativeLayout
         android:layout_width="match_parent"
@@ -52,4 +53,10 @@
 
         </LinearLayout>
     </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="还可以改变色彩空间。\nSample：改变宽高。\ncompress：改变图像的位深和透明度压缩，文件大小会变小,但解码成Bitmap后大小不变。\n那compress有什么使用场景？"
+        />
 </LinearLayout>
