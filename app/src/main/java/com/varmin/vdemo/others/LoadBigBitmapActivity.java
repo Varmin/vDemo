@@ -1,8 +1,5 @@
 package com.varmin.vdemo.others;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.Environment;
 import android.support.v7.widget.AppCompatSeekBar;
 import android.util.Log;
 import android.widget.SeekBar;
@@ -17,11 +14,19 @@ public class LoadBigBitmapActivity extends BaseActivity {
 
     private float currProgress = 1;
 
-
     @BindView(R.id.iiv_image_info)
     ImageInfoView imageInfoView;
     @BindView(R.id.pgb_image_sample)
-    AppCompatSeekBar progressBar;
+    AppCompatSeekBar seekBarSample;
+    @BindView(R.id.pgb_image_compress)
+    AppCompatSeekBar seekBarCompress;
+
+
+    public enum Type {
+        sample,
+        compress
+    }
+    private Type type = Type.sample;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_load_big_bitmap;
@@ -29,32 +34,56 @@ public class LoadBigBitmapActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-        progressBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        seekBarSample.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                Log.d(TAG, "onProgressChanged: progress="+progress);
             }
 
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
-                Log.d(TAG, "onStartTrackingTouch: "+seekBar.getProgress());
             }
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Log.d(TAG, "onStopTrackingTouch: "+seekBar.getProgress());
                 currProgress = (float) (100 - seekBar.getProgress()) / 100;
+                type = Type.sample;
                 onWindowFocusChanged(true);
             }
         });
+        seekBarCompress.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Log.d(TAG, "onStopTrackingTouch: "+seekBar.getProgress());
+                currProgress = (float) (100 - seekBar.getProgress()) / 100;
+                type = Type.compress;
+                onWindowFocusChanged(true);
+            }
+        });
+
     }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         if (hasFocus) {
-//            imageInfoView.setBitmapSample(R.mipmap.big_2_xxh, (int)(imageInfoView.getWidth()*currProgress), (int) (imageInfoView.getHeight()*currProgress));
-           //imageInfoView.setBitmapSample(R.drawable.big_2, (int)(imageInfoView.getWidth()*currProgress), (int) (imageInfoView.getHeight()*currProgress));
-            imageInfoView.settBitmapCompress((int) (currProgress*100), "/sdcard/bitmap.jpg");
+            switch (type) {
+                case sample:
+                    imageInfoView.setBitmapSample(R.drawable.big_2, (int)(imageInfoView.getWidth()*currProgress), (int) (imageInfoView.getHeight()*currProgress));
+                    break;
+                case compress:
+                    imageInfoView.setBitmapCompress((int) (currProgress*100));
+                    break;
+            }
         }
     }
 }
+
+

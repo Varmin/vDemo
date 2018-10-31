@@ -27,9 +27,7 @@ public class MaterialEditText extends AppCompatEditText {
     private final float LABEL_TEXT_SIZE = Utils.dp2px(12);
     private boolean useFloatingLabel = true;
     private boolean isFloatingLabel = false;
-
     private final Paint mPaint;
-
     private float floatLabelFraction;
 
     {
@@ -55,8 +53,6 @@ public class MaterialEditText extends AppCompatEditText {
         this.isFloatingLabel = isFloatingLabel;
         initView();
     }
-
-
 
     private void initView() {
         if (useFloatingLabel) {
