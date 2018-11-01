@@ -3,10 +3,11 @@
     <declare-styleable name="MaterialEditText">
         <attr name="useFloatingLabel" format="boolean"/>
     </declare-styleable>
-    <declare-styleable name="LableView">
+    <declare-styleable name="LabelView">
         <attr name="android:text"/>
         <attr name="android:textSize"/>
         <attr name="android:textColor"/>
         <attr name="round_radius" format="dimension"/>
+        <attr name="is_bound" format="boolean"/>
     </declare-styleable>
 </resources>

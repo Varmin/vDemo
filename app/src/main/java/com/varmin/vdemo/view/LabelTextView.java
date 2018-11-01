@@ -14,9 +14,9 @@ import android.util.Log;
  * on 2018/11/1  11:21.
  * 文件描述：去掉TextView内部间隔
  */
-public class LableTextView extends AppCompatTextView {
+public class LabelTextView extends AppCompatTextView {
     private static final String TAG = "LableTextView";
-    public LableTextView(Context context, @Nullable AttributeSet attrs) {
+    public LabelTextView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -34,10 +34,10 @@ public class LableTextView extends AppCompatTextView {
         Rect bound = new Rect();
         mPaint.getTextBounds(getText().toString(), 0, getText().toString().length(), bound);
 
-        Log.d(TAG, "onDraw:"+getMeasuredWidth()+", "+getMeasuredHeight());
+        /*Log.d(TAG, "onDraw:"+getMeasuredWidth()+", "+getMeasuredHeight());
         Log.d(TAG, "onDraw: w="+(bound.right-bound.left)+", h="+(bound.bottom - bound.top));
         //setMeasuredDimension(bound.right-bound.left, bound.bottom - bound.top);
-        Log.d(TAG, "onDraw:"+getMeasuredWidth()+", "+getMeasuredHeight());
+        Log.d(TAG, "onDraw:"+getMeasuredWidth()+", "+getMeasuredHeight());*/
     }
 
     @Override
