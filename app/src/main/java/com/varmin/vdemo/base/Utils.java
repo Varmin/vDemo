@@ -28,17 +28,17 @@ public class Utils {
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, Resources.getSystem().getDisplayMetrics());
     }
 
-    public static Bitmap getBitmap(Context context, int width){
+    public static Bitmap getBitmap(Context context, int width, int drawID){
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
-        BitmapFactory.decodeResource(context.getResources(), R.drawable.dog, options);
-        options.inJustDecodeBounds = false;
-
+        BitmapFactory.decodeResource(context.getResources(), drawID, options);
         Log.e(TAG, "getBitmap: options="+options.outWidth+", "+options.outHeight+", "+width );
+        options.inJustDecodeBounds = false;
         options.inDensity = options.outWidth;
         options.inTargetDensity = width;
-        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.dog, options);
-        Log.e(TAG, "getBitmap: options="+options.outWidth+", "+options.outHeight+", "+width );
+        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), drawID, options);
+        Log.e(TAG, "getBitmap: getWidth="+bitmap.getWidth()+", "+bitmap.getHeight() );
+
         return bitmap;
     }
 }

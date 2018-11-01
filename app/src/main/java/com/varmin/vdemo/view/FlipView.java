@@ -2,6 +2,7 @@ package com.varmin.vdemo.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
@@ -19,43 +20,47 @@ import com.varmin.vdemo.base.Utils;
  */
 public class FlipView extends View {
     private static final String TAG = "FlipView";
-    private final float WIDTH = Utils.dp2px(200);
+    private final int WIDTH = (int) Utils.dp2px(200);
     private final float defalutHeight = Utils.dp2px(200);
     private Bitmap mTarBitmap;
 
     public FlipView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        mTarBitmap = Utils.getBitmap(context, (int) WIDTH);
+        mTarBitmap = Utils.getBitmap(context, (int) WIDTH, R.drawable.dog_500_500);
         setBackgroundResource(R.color.base_gray_bg_999);
     }
 
 
     private final Paint paint;
+    private final Camera camera;
 
     {
         paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        //todo ？？？有阴影但不是颜色
-        //paint.setColor(0x99FF4081);
-        Log.e(TAG, "instance initializer: WIDTH="+WIDTH );
+        camera = new Camera();
+        //camera.setLocation(0,0,-80);
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.AT_MOST) {
-            setMeasuredDimension(MeasureSpec.getSize(widthMeasureSpec), (int) defalutHeight);
-        }
+        setMeasuredDimension(WIDTH, WIDTH);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Log.e(TAG, "onDraw: "+getWidth()+", "+getHeight() );
+        //Log.e(TAG, "onDraw: "+getWidth()+", "+getHeight() );
 
-        //canvas.clipRect(getWidth()/2 - WIDTH/2, 0, getWidth()/2 + WIDTH/2, WIDTH/2);
-        canvas.drawBitmap(mTarBitmap, getWidth()/2 - WIDTH/2, 0, paint);
-        //canvas.drawRect(getWidth()/2 - WIDTH/2, WIDTH*2, getWidth()/2 + WIDTH/2, WIDTH*3, paint);
+        canvas.save();
+        //canvas.clipRect(0, 0, getWidth(), BITMAP_HEIGHT/2);
+
+        canvas.drawBitmap(mTarBitmap, 0, 0, paint);
+        camera.setLocation(0,0,-800);
+        camera.applyToCanvas(canvas);
+
+        canvas.restore();
     }
+
 
 
 }

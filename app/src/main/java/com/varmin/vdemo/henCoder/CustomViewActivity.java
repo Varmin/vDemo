@@ -8,7 +8,7 @@ import com.varmin.vdemo.view.MaterialEditText;
 
 import butterknife.BindView;
 
-public class CameraViewActivity extends BaseActivity {
+public class CustomViewActivity extends BaseActivity {
     @BindView(R.id.view_flip)
     FlipView flipView;
     @BindView(R.id.met_edit)

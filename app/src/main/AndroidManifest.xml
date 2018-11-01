@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".others.LoadBigBitmapActivity"
+            android:name=".henCoder.CustomViewActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".henCoder.HenCoderMainActivity" />
-        <!-- <activity android:name=".henCoder.CameraViewActivity"></activity> -->
+        <!-- <activity android:name=".henCoder.CustomViewActivity"></activity> -->
         <!--<activity android:name=".others.LoadBigBitmapActivity"></activity>-->
     </application>
 

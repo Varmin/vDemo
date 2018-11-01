@@ -19,7 +19,7 @@ public class HenCoderMainActivity extends BaseActivity {
     public void onViewClick(View view){
         switch (view.getId()) {
             case R.id.camera_view:
-                Utils.startActivity(this, CameraViewActivity.class);
+                Utils.startActivity(this, CustomViewActivity.class);
                 break;
         }
 
