@@ -36,4 +36,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onDestroy();
         if (mUnBinder != null) mUnBinder.unbind();
     }
+
+    protected AppCompatActivity getActivity(){
+        return this;
+    }
 }

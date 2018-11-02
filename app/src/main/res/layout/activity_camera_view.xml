@@ -43,7 +43,11 @@
         app:is_bound="false"
         />
     <com.varmin.vdemo.view.LabelLayout
-        android:id="@+id/ll_la"
+        android:id="@+id/ll_label_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        android:background="@drawable/base_gray_bg"
+        />
 </LinearLayout>

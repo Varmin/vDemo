@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.varmin.vdemo.R;
+import com.varmin.vdemo.base.Utils;
 
 /**
  * Created by HuangYang
@@ -23,7 +24,7 @@ import com.varmin.vdemo.R;
 public class LabelView extends View {
     private static final String TAG = "LableView";
     private String text;
-    private int textSize;
+    private int textSize = (int) Utils.dp2sp(15);
     private Paint mPaint;
     private int roundRadius;
     private Rect rect;
@@ -31,18 +32,32 @@ public class LabelView extends View {
     private Paint.FontMetrics metrics;
     private boolean isBounds = true;
 
+    public LabelView(Context context, String tag, boolean isBounds) {
+        this(context, null);
+        this.text = tag;
+        this.isBounds = isBounds;
+        setTextBounds();
+    }
+
+    public LabelView(Context context) {
+        this(context, null);
+    }
+
     public LabelView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init(context, attrs);
     }
 
     private void init(Context context, AttributeSet attrs) {
-        TypedArray typeArray = context.obtainStyledAttributes(attrs, R.styleable.LabelView);
-        text = typeArray.getString(R.styleable.LableView_android_text);
-        textSize = typeArray.getDimensionPixelSize(R.styleable.LableView_android_textSize, 15);
-        textColor = typeArray.getColorStateList(R.styleable.LableView_android_textColor);
-        roundRadius = typeArray.getDimensionPixelSize(R.styleable.LabelView_round_radius,0);
-        isBounds = typeArray.getBoolean(R.styleable.LabelView_is_bound, true);
+        if (attrs != null) {
+            TypedArray typeArray = context.obtainStyledAttributes(attrs, R.styleable.LabelView);
+            text = typeArray.getString(R.styleable.LabelView_android_text);
+            textSize = typeArray.getDimensionPixelSize(R.styleable.LabelView_android_textSize, 15);
+            textColor = typeArray.getColorStateList(R.styleable.LabelView_android_textColor);
+            roundRadius = typeArray.getDimensionPixelSize(R.styleable.LabelView_round_radius,0);
+            isBounds = typeArray.getBoolean(R.styleable.LabelView_is_bound, true);
+            typeArray.recycle();
+        }
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaint.setTextSize(textSize);
         if (textColor == null) textColor = ColorStateList.valueOf(0xFF000000);
@@ -68,7 +83,7 @@ public class LabelView extends View {
         }else {
             setMeasuredDimension(rect.right-rect.left+getPaddingLeft()+getPaddingRight(), (int) (metrics.descent - metrics.ascent+getPaddingTop()+getPaddingBottom()));
         }
-        Log.d(TAG, "onMeasure: "+getMeasuredWidth()+", "+getMeasuredHeight());
+        Log.d(TAG, "onMeasure: "+getMeasuredWidth()+", "+getMeasuredHeight()+", text="+text);
     }
 
     @Override
@@ -102,5 +117,26 @@ public class LabelView extends View {
             mPaint.setColor(Color.BLUE);
             canvas.drawLine(0, topLineY, getMeasuredWidth()-getPaddingRight(), topLineY, mPaint);
         }
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+    public String getText(){return this.text;}
+
+    public void setTextSize(int textSize) {
+        this.textSize = textSize;
+    }
+
+    public void setRoundRadius(int roundRadius) {
+        this.roundRadius = roundRadius;
+    }
+
+    public void setTextColor(ColorStateList textColor) {
+        this.textColor = textColor;
+    }
+
+    public void setBounds(boolean bounds) {
+        isBounds = bounds;
     }
 }
