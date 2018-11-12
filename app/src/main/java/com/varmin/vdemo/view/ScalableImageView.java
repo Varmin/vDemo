@@ -42,8 +42,10 @@ public class ScalableImageView extends View implements GestureDetector.OnGesture
     private Paint mPaint;
     private final float WIDTH = Utils.dp2px(300);
     private Bitmap bitmap;
-    private int originalOffsetX;
-    private int originalOffsetY;
+    private float originalOffsetX;
+    private float originalOffsetY;
+    private float offsetX;
+    private float offsetY;
     private boolean isBig;
     private float smallScale;
     private float bigScale;
@@ -90,8 +92,8 @@ public class ScalableImageView extends View implements GestureDetector.OnGesture
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
         Log.d(TAG, "onSizeChanged: ");
-        originalOffsetX = (getWidth()-bitmap.getWidth())/2;
-        originalOffsetY = (getHeight()-bitmap.getHeight())/2;
+        originalOffsetX = (float) (getWidth()-bitmap.getWidth())/2;
+        originalOffsetY = (float) (getHeight()-bitmap.getHeight())/2;
 
         if((float)bitmap.getWidth()/bitmap.getHeight() > (float)getWidth()/getHeight()){//图片比较胖
             smallScale = (float) bitmap.getWidth() / getWidth();
@@ -100,6 +102,7 @@ public class ScalableImageView extends View implements GestureDetector.OnGesture
             smallScale = (float) bitmap.getHeight() / getHeight();
             bigScale = (float) getHeight() / bitmap.getHeight() * OVER_SCALE_FACTOR;
         }
+
         smallScale = smallScale < 1 ? 1 : smallScale;
         currentScale = isBig ? bigScale : smallScale;
 
@@ -109,7 +112,12 @@ public class ScalableImageView extends View implements GestureDetector.OnGesture
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        Log.d(TAG, "onDraw: currentScale="+currentScale);
+        Log.d(TAG, "onDraw: currentScale="+currentScale+", "+offsetX+", "+offsetY);
+
+        float scaleFraction = (currentScale - smallScale) / (bigScale - smallScale);
+        offsetX = offsetX * scaleFraction;
+        offsetY = offsetY * scaleFraction;
+        canvas.translate(offsetX, offsetY);
         canvas.scale(currentScale, currentScale, getWidth()/2, getHeight()/2);
         canvas.drawBitmap(bitmap, originalOffsetX, originalOffsetY, mPaint);
     }
@@ -143,8 +151,32 @@ public class ScalableImageView extends View implements GestureDetector.OnGesture
     }
 
     @Override
-    public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
+    public boolean onScroll(MotionEvent down, MotionEvent event, float distanceX, float distanceY) {
+        if (isBig) {
+            offsetX -= distanceX;
+            offsetY -= distanceY;
+            Log.d(TAG, "onScroll: "+offsetX+", "+offsetY);
+            fixOffsets();
+
+            invalidate();
+        }
         return false;
+    }
+
+
+    private void fixOffsets() {
+        if (bitmap.getWidth()*bigScale - getWidth() > 0) {
+            offsetX = Math.min(offsetX, (bitmap.getWidth() * bigScale - getWidth()) / 2);
+            offsetX = Math.max(offsetX, - (bitmap.getWidth() * bigScale - getWidth()) / 2);
+        }else {
+            offsetX = 0;
+        }
+        if (bitmap.getHeight()*bigScale - getHeight() > 0) {
+            offsetY = Math.min(offsetY, (bitmap.getHeight() * bigScale - getHeight()) / 2);
+            offsetY = Math.max(offsetY, - (bitmap.getHeight() * bigScale - getHeight()) / 2);
+        }else {
+            offsetY = 0;
+        }
     }
 
     @Override
@@ -167,10 +199,13 @@ public class ScalableImageView extends View implements GestureDetector.OnGesture
 
     @Override
     public boolean onDoubleTap(MotionEvent e) {
+        //todo 放大偏移后，缩小偏移量
+        Log.d(TAG, "onDoubleTap: "+offsetX+", "+offsetY);
         isBig = !isBig;
         if (isBig) {
             getAnimator().start();
         }else {
+            Log.d(TAG, "onDoubleTap: "+offsetX+", "+offsetY);
             getAnimator().reverse();
         }
         return false;
