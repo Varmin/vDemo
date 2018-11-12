@@ -14,18 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".henCoder.ScalableImageActivity"
+            android:name=".test.TestActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <!--<activity android:name=".MainActivity" />-->
         <!-- <activity android:name=".henCoder.CustomViewActivity"></activity> -->
         <!-- <activity android:name=".others.LoadBigBitmapActivity"></activity> -->
         <!-- <activity android:name=".others.OkHttpTestActivity"></activity> -->
-        <!--<activity android:name=".henCoder.ScalableImageActivity"></activity>-->
+        <!-- <activity android:name=".henCoder.ScalableImageActivity"></activity> -->
+        <!--<activity android:name=".test.TestActivity"></activity>-->
     </application>
 
 </manifest>

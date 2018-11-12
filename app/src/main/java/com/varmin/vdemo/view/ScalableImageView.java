@@ -68,7 +68,7 @@ public class ScalableImageView extends View implements GestureDetector.OnGesture
 
     private void initView() {
         Log.d(TAG, "initView: ");
-        bitmap = Utils.getBitmap(mContext, (int) WIDTH, R.drawable.dog);
+        bitmap = Utils.getBitmap(mContext, (int) WIDTH, R.drawable.big_1);
         setBackgroundResource(R.color.base_view_bg);
 
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
