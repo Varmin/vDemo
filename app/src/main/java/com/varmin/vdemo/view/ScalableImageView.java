@@ -93,14 +93,16 @@ public class ScalableImageView extends View implements GestureDetector.OnGesture
         originalOffsetX = (getWidth()-bitmap.getWidth())/2;
         originalOffsetY = (getHeight()-bitmap.getHeight())/2;
 
-        if((float)bitmap.getWidth()/bitmap.getWidth() > (float)getWidth()/getHeight()){//图片比较胖
+        if((float)bitmap.getWidth()/bitmap.getHeight() > (float)getWidth()/getHeight()){//图片比较胖
             smallScale = (float) bitmap.getWidth() / getWidth();
             bigScale = (float) getWidth() / bitmap.getWidth() * OVER_SCALE_FACTOR;
         }else {
             smallScale = (float) bitmap.getHeight() / getHeight();
             bigScale = (float) getHeight() / bitmap.getHeight() * OVER_SCALE_FACTOR;
         }
+        smallScale = smallScale < 1 ? 1 : smallScale;
         currentScale = isBig ? bigScale : smallScale;
+
         Log.d(TAG, "onSizeChanged: smallScale="+smallScale+", bigScale="+bigScale+", currenScale="+currentScale);
     }
 
