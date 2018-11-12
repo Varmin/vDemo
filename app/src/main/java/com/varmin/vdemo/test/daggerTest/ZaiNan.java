@@ -10,6 +10,8 @@ import javax.inject.Inject;
 public class ZaiNan {
     @Inject
     BaoZi baoZi;
+//    @Inject
+//    Noodle noodle;
 
     @Inject
     public ZaiNan(){}
