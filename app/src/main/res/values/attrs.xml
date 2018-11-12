@@ -10,4 +10,7 @@
         <attr name="round_radius" format="dimension"/>
         <attr name="is_bound" format="boolean"/>
     </declare-styleable>
+    <declare-styleable name="ScalableImageView">
+
+    </declare-styleable>
 </resources>

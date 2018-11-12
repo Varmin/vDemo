@@ -10,4 +10,8 @@
     android:id="@+id/camera_view"
     style="@style/base_button"
     android:text="CameraView"/>
+    <Button
+        android:id="@+id/scalable_image_view"
+        style="@style/base_button"
+        android:text="ScalableImageView"/>
 </LinearLayout>

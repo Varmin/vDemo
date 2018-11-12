@@ -21,6 +21,9 @@ public class HenCoderMainActivity extends BaseActivity {
             case R.id.camera_view:
                 Utils.startActivity(this, CustomViewActivity.class);
                 break;
+            case R.id.scalable_image_view:
+                Utils.startActivity(this, ScalableImageActivity.class);
+                break;
         }
 
 

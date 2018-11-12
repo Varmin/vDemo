@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.View;
 
 import com.varmin.vdemo.R;
 
@@ -44,5 +45,16 @@ public class Utils {
         Log.e(TAG, "getBitmap: getWidth="+bitmap.getWidth()+", "+bitmap.getHeight() );
 
         return bitmap;
+    }
+
+    public static int[] getMeasureDefaultSize(int widthMeasureSpec, int heightMeasureSpec, int defaultWidhtSize, int defaultHeightSize){
+        return new int[]{getMeasureDefaultSize(widthMeasureSpec, defaultWidhtSize), getMeasureDefaultSize(heightMeasureSpec, defaultHeightSize)};
+    }
+
+    public static int getMeasureDefaultSize(int measureSpec, int defaultSize){
+        if (View.MeasureSpec.AT_MOST == View.MeasureSpec.getMode(measureSpec)) {
+            return defaultSize;
+        }
+        return View.MeasureSpec.getSize(measureSpec);
     }
 }

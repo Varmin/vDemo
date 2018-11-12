@@ -36,4 +36,6 @@ dependencies {
         exclude module: 'support-compat'
     }
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
 }

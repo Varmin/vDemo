@@ -17,6 +17,7 @@
     <color name="base_common_light_red_bg">#FfF3F3</color>
     <color name="base_gray_bg_999">#999999</color>
     <color name="base_gray_line">#dddddd</color>
+    <color name="base_view_bg">#f0eff5</color>
     <drawable name="base_gray_bg">#f0eff5</drawable>
     <color name="base_red">#FF4081</color>
     <color name="base_text_red_app">@color/base_app_bg</color>
