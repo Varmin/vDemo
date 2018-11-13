@@ -2,13 +2,14 @@ package com.varmin.vdemo.test;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import com.varmin.vdemo.R;
+import com.varmin.vdemo.test.daggerTest.DaggerFoodComponent;
 import com.varmin.vdemo.test.daggerTest.DaggerZaiNanComponent;
-import com.varmin.vdemo.test.daggerTest.Noodle;
+import com.varmin.vdemo.test.daggerTest.FoodComponent;
+import com.varmin.vdemo.test.daggerTest.Girl;
 import com.varmin.vdemo.test.daggerTest.ZaiNanComponent;
 
 import javax.inject.Inject;
@@ -17,7 +18,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "TestActivity";
     private TestActivity mContext;
     @Inject
-    Noodle noodle;
+    Girl girl;
     private ZaiNanComponent component;
 
     @Override
@@ -28,14 +29,16 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         View btnTest = findViewById(R.id.btn_test);
         btnTest.setOnClickListener(this);
 
-        component = DaggerZaiNanComponent.builder().build();
+        FoodComponent foodComponent = DaggerFoodComponent.builder().build();
+        component = DaggerZaiNanComponent.builder()
+                .foodComponent(foodComponent)
+                .build();
         component.inject(this);
-        Log.d(TAG, "onCreate: "+noodle.toString());
     }
 
     @Override
     public void onClick(View v) {
-
-        Toast.makeText(mContext, component.waimai().toString(), Toast.LENGTH_SHORT).show();
+        String content = component.zaiNan().toString() + "-" + girl.toString();
+        Toast.makeText(mContext, content, Toast.LENGTH_SHORT).show();
     }
 }

@@ -5,13 +5,13 @@ import dagger.Provides;
 
 /**
  * Created by HuangYang
- * on 2018/11/12  17:06.
+ * on 2018/11/12  17:54.
  * 文件描述：
  */
 @Module
-public class ZaiNanModule {
+public class FoodModule {
     @Provides
-    Girl provideNoodle(){
-        return new Girl();
+    BaoMiHua providesBaoMiHua(){
+        return new BaoMiHua();
     }
 }

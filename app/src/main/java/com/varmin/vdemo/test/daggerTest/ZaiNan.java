@@ -9,15 +9,20 @@ import javax.inject.Inject;
  */
 public class ZaiNan {
     @Inject
+    Game game;
+
+    @Inject
     BaoZi baoZi;
-//    @Inject
-//    Noodle noodle;
+
+    @Inject
+    BaoMiHua baoMiHua;
 
     @Inject
     public ZaiNan(){}
 
     @Override
     public String toString() {
-        return baoZi.toString();
+        String content = game.toString()+"-"+baoZi.toString()+"-"+baoMiHua.toString();
+        return content;
     }
 }
