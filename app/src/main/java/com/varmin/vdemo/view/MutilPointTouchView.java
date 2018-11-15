@@ -96,7 +96,7 @@ public class MutilPointTouchView extends View {
                 //Log.d(TAG, "onTouchEvent: ACTION_MOVE="+event.getActionIndex()+", "+event.getPointerId(event.getActionIndex()));
                 int curIndex = event.findPointerIndex(tracePointId);
                 Log.d(TAG, "onTouchEvent: curIndex=" + curIndex + ", curId=" + tracePointId);
-                // 当前位置 - down位置 + 初始偏移
+                //当前位置 - down位置 + 初始偏移
                 offsetX = event.getX(curIndex) - downX + originOffsetX;
                 offsetY = event.getY(curIndex) - downY + originOffsetY;
 
