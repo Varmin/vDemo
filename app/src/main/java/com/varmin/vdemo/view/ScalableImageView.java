@@ -68,7 +68,7 @@ public class ScalableImageView extends View implements GestureDetector.OnGesture
 
     private void initView() {
         Log.d(TAG, "initView: ");
-        bitmap = Utils.getBitmap(mContext, (int) WIDTH, R.drawable.big_1);
+        bitmap = Utils.getBitmap(mContext, (int) WIDTH, R.drawable.dog);
         setBackgroundResource(R.color.base_view_bg);
 
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -76,17 +76,6 @@ public class ScalableImageView extends View implements GestureDetector.OnGesture
         gestureDetecor.setIsLongpressEnabled(false);
         overScroller = new OverScroller(mContext);
     }
-
-    @Override
-    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        Log.d(TAG, "onMeasure: "+MeasureSpec.getSize(widthMeasureSpec)+", "+MeasureSpec.getSize(heightMeasureSpec));
-        /*int [] size = Utils.getMeasureDefaultSize(widthMeasureSpec, heightMeasureSpec, (int) WIDTH, (int) WIDTH);
-        Log.d(TAG, "onMeasure: sizes="+size[0]+", "+size[1]);
-        //这里用填充满屏幕
-        setMeasuredDimension(size[0], size[1]);*/
-    }
-
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -103,6 +92,7 @@ public class ScalableImageView extends View implements GestureDetector.OnGesture
             bigScale = (float) getHeight() / bitmap.getHeight() * OVER_SCALE_FACTOR;
         }
 
+        //todo samll贴边，不主动设置为1
         smallScale = smallScale < 1 ? 1 : smallScale;
         currentScale = isBig ? bigScale : smallScale;
 
@@ -157,7 +147,6 @@ public class ScalableImageView extends View implements GestureDetector.OnGesture
             offsetY -= distanceY;
             Log.d(TAG, "onScroll: "+offsetX+", "+offsetY);
             fixOffsets();
-
             invalidate();
         }
         return false;
@@ -199,10 +188,13 @@ public class ScalableImageView extends View implements GestureDetector.OnGesture
 
     @Override
     public boolean onDoubleTap(MotionEvent e) {
-        //todo 放大偏移后，缩小偏移量
         Log.d(TAG, "onDoubleTap: "+offsetX+", "+offsetY);
         isBig = !isBig;
         if (isBig) {
+            //todo 点击放大时的反向偏移
+//            offsetX  = (e.getX() - (float) getWidth()/2) -  (e.getX() - (float) getWidth()/2)*bigScale;
+//            offsetY  = (e.getY() - (float) getHeight()/2) -  (e.getY() - (float) getHeight()/2)*bigScale;
+
             getAnimator().start();
         }else {
             Log.d(TAG, "onDoubleTap: "+offsetX+", "+offsetY);

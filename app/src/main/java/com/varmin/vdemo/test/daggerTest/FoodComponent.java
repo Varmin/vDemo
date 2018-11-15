@@ -11,9 +11,4 @@ import dagger.Component;
 public interface FoodComponent {
 //    BaoZi baozi();
     BaoMiHua getBaoMiHua();
-    /**
-     * 1
-     *
-     *  master
-     */
 }
