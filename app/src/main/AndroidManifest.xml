@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".henCoder.MutilPointActivity"
+            android:name=".others.RxJava2TestActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,8 @@
         <!-- <activity android:name=".others.OkHttpTestActivity"></activity> -->
         <!-- <activity android:name=".henCoder.ScalableImageActivity"></activity> -->
         <!-- <activity android:name=".test.TestActivity"></activity> -->
-        <!--<activity android:name=".henCoder.MutilPointActivity"></activity>-->
+        <!-- <activity android:name=".henCoder.MutilPointActivity"></activity> -->
+        <!--<activity android:name=".others.RxJava2TestActivity"></activity>-->
     </application>
 
 </manifest>
