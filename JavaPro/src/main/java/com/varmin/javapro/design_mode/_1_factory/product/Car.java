@@ -1,4 +1,4 @@
-package com.varmin.javapro.design_mode.product;
+package com.varmin.javapro.design_mode._1_factory.product;
 
 /**
  * Created by HuangYang

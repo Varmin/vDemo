@@ -1,7 +1,7 @@
-package com.varmin.javapro.design_mode.factory;
+package com.varmin.javapro.design_mode._1_factory.factory;
 
-import com.varmin.javapro.design_mode.product.TvHaierProductImpl;
-import com.varmin.javapro.design_mode.product.TvProduct;
+import com.varmin.javapro.design_mode._1_factory.product.TvHaierProductImpl;
+import com.varmin.javapro.design_mode._1_factory.product.TvProduct;
 
 /**
  * Created by HuangYang

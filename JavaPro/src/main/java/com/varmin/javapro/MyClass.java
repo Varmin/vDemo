@@ -1,6 +1,6 @@
 package com.varmin.javapro;
 
-import com.varmin.javapro.design_mode.FactoryTestMain;
+import com.varmin.javapro.design_mode._1_factory.FactoryTestMain;
 
 public class MyClass {
     public static void main(String[] args){

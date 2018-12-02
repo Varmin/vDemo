@@ -6,6 +6,8 @@ import android.widget.TextView;
 import com.varmin.vdemo.R;
 import com.varmin.vdemo.base.BaseActivity;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import okhttp3.Call;
@@ -15,6 +17,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class OkHttpTestActivity extends BaseActivity {
     @BindView(R.id.tv_info)
@@ -41,7 +46,8 @@ public class OkHttpTestActivity extends BaseActivity {
             @Override
             public void run() {
                 try {
-                    OkHttpClient mOkClient = new OkHttpClient();
+                    OkHttpClient m = new OkHttpClient();
+                    OkHttpClient mOkClient = new OkHttpClient.Builder().readTimeout(5,TimeUnit.SECONDS).build();
                     final Request request = new Request.Builder().url("http://wanandroid.com/wxarticle/chapters/json").build();
                     final Response response = mOkClient.newCall(request).execute();
                     final String info = response.body().string();
@@ -116,5 +122,13 @@ public class OkHttpTestActivity extends BaseActivity {
                 });
             }
         }).start();
+    }
+
+    public void getExecuteRetrofit(){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("")
+                //.addConverterFactory(GsonConverterFactory.create())//默认
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
     }
 }

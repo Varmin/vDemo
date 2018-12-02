@@ -1,7 +1,7 @@
-package com.varmin.javapro.design_mode.factory;
+package com.varmin.javapro.design_mode._1_factory.factory;
 
-import com.varmin.javapro.design_mode.product.Car;
-import com.varmin.javapro.design_mode.product.CarHongQiImpl;
+import com.varmin.javapro.design_mode._1_factory.product.Car;
+import com.varmin.javapro.design_mode._1_factory.product.CarHongQiImpl;
 
 /**
  * Created by HuangYang

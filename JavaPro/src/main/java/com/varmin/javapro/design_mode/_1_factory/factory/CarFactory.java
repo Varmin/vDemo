@@ -1,6 +1,6 @@
-package com.varmin.javapro.design_mode.factory;
+package com.varmin.javapro.design_mode._1_factory.factory;
 
-import com.varmin.javapro.design_mode.product.Car;
+import com.varmin.javapro.design_mode._1_factory.product.Car;
 
 /**
  * Created by HuangYang

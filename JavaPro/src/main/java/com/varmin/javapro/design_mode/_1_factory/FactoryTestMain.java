@@ -1,11 +1,11 @@
-package com.varmin.javapro.design_mode;
+package com.varmin.javapro.design_mode._1_factory;
 
 import com.varmin.javapro.base.BaseObj;
-import com.varmin.javapro.design_mode.factory.TvCarFactoryImpl_1;
-import com.varmin.javapro.design_mode.factory.TvCarFactoryImpl_2;
-import com.varmin.javapro.design_mode.factory.TvHaierFactoryImpl;
-import com.varmin.javapro.design_mode.factory.TvKangJiaFactoryImpl;
-import com.varmin.javapro.design_mode.factory.MakeTvFactory;
+import com.varmin.javapro.design_mode._1_factory.factory.TvCarFactoryImpl_1;
+import com.varmin.javapro.design_mode._1_factory.factory.TvCarFactoryImpl_2;
+import com.varmin.javapro.design_mode._1_factory.factory.TvHaierFactoryImpl;
+import com.varmin.javapro.design_mode._1_factory.factory.TvKangJiaFactoryImpl;
+import com.varmin.javapro.design_mode._1_factory.factory.MakeTvFactory;
 
 /**
  * Created by HuangYang
