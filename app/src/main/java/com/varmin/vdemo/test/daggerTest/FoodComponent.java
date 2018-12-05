@@ -9,6 +9,5 @@ import dagger.Component;
  */
 @Component(modules = FoodModule.class)
 public interface FoodComponent {
-//    BaoZi baozi();
     BaoMiHua getBaoMiHua();
 }

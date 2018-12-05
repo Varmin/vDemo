@@ -16,6 +16,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
 }
 
 configurations.all {
@@ -41,7 +44,7 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:2.11'
     //RxJava
     implementation 'io.reactivex.rxjava2:rxjava:2.0.1'
-    //implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
     //OkHttp
     //implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     //Retrofit，已默认引用OKhttp
