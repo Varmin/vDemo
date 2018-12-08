@@ -30,6 +30,7 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
         btnTest.setOnClickListener(this);
 
         FoodComponent foodComponent = DaggerFoodComponent.builder().build();
+
         component = DaggerZaiNanComponent.builder()
                 .foodComponent(foodComponent)
                 .build();

@@ -49,5 +49,18 @@
 * ServiceMethod、loadServiceMethod()
 ##### 动态代理模式的应用
 * 
-
-
+-----
+## Dagger2
+* 使用反射，会消耗资源。
+  但是，Dagger在编译时使用反射，生成中间代码，在运行时使用。所以在程序运行时没影响。
+  所以，像Dagger、ButterKnife这样的注解框架，即使使用反射，在程序运行时也不会影响速度。
+  「原理说明白！」
+* component A 依赖 B时
+    * A/B的Module可以给各自的Component提供实例。
+    * 但是B的Module中提供的实例不能直接给A用，需要在B的Component中提供B Module中实例，A才能用。（原因？）
+#### 为什么comptA依赖comptB的时候，comptA想用到moduleB中提供的实例obj，需要在comptB中显式的提供出来？
+> 猜想：
+* 若comptB中还未显式提供obj，那么只有单独使用comptB的时候，可以用到moduleB中的obj。
+    * comptB的中间代码中，有moduleB的实例。但是是private。所以只有moduleB中自己可用obj。
+* compA依赖compB后，在compA中虽然有compB的实例了，但在compA中不能访问到compB中的moduleB。所以，不能使用moudleB中的obj。
+* 除非，此时在compB中显示提供出来moduleB中的obj才可访问到。

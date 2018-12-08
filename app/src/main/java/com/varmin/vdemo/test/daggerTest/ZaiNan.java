@@ -14,15 +14,18 @@ public class ZaiNan {
     @Inject
     BaoZi baoZi;
 
-    @Inject
-    BaoMiHua baoMiHua;
+    /*@Inject
+    BaoMiHua baoMiHua;*/
 
     @Inject
     public ZaiNan(){}
 
     @Override
     public String toString() {
-        String content = game.toString()+"-"+baoZi.toString()+"-"+baoMiHua.toString();
+        String content = game.toString()
+                +"-"+baoZi.toString()
+                //+"-"+baoMiHua.toString()
+                ;
         return content;
     }
 }
