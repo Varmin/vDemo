@@ -64,3 +64,33 @@
     * comptB的中间代码中，有moduleB的实例。但是是private。所以只有moduleB中自己可用obj。
 * compA依赖compB后，在compA中虽然有compB的实例了，但在compA中不能访问到compB中的moduleB。所以，不能使用moudleB中的obj。
 * 除非，此时在compB中显示提供出来moduleB中的obj才可访问到。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
