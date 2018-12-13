@@ -18,7 +18,7 @@ public class MultipleHelper {
 
     public static MultipleHelper helper;
     private final HashMap<String, Integer> multipleMap;
-    private final HashMap<String, Integer> multipleDefaultMap;
+    private HashMap<String, Integer> multipleDefaultMap;
 
     public static MultipleHelper getHelper(){
         if (helper == null) {
@@ -28,17 +28,17 @@ public class MultipleHelper {
     }
     private MultipleHelper(){
         multipleMap = new HashMap<>();
-        multipleDefaultMap = new HashMap<>();
         initDefaultMap();
     }
 
     private void initDefaultMap() {
-        multipleDefaultMap.put(Status.REFRESH, R.layout.refresh_status);
-        multipleDefaultMap.put(Status.LOADING, R.layout.loading_status);
-        multipleDefaultMap.put(Status.EMPTY, R.layout.empty_status);
-        multipleDefaultMap.put(Status.ERR_NET, R.layout.err_net_status);
-        multipleDefaultMap.put(Status.ERROR, R.layout.error_status);
-        multipleDefaultMap.put(Status.SUCCESS, R.layout.success_status);
+        multipleDefaultMap = new HashMap<>();
+        multipleDefaultMap.put(Status.REFRESH, DEFAULT_REFRESH_LAYOUT);
+        multipleDefaultMap.put(Status.LOADING, DEFAULT_LOADING_LAYOUT);
+        multipleDefaultMap.put(Status.EMPTY, DEFAULT_EMPTY_LAYOUT);
+        multipleDefaultMap.put(Status.ERR_NET, DEFAULT_ERR_NET_LAYOUT);
+        multipleDefaultMap.put(Status.ERROR, DEFAULT_ERROR_LAYOUT);
+        multipleDefaultMap.put(Status.SUCCESS, DEFAULT_SUCCESS_LAYOUT);
     }
 
     public MultipleHelper setRefresh(int layoutId){
