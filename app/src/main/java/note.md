@@ -1,10 +1,12 @@
-## OKHttp：作为Android内置网络访问api，很重要。
-* Build模式
+## OKHttp：
+> 作为Android内置网络访问api，很重要。
+* Build模式进行初始化
 * executed 只能执行一次
 
 ### dispatcher（生产者）
 * 维护异步同步的请求队列。
 * executorService，线程池（消费者池）
+    * 最大64个线程
     * 和runningAsyncCalls的区别？ 添加+线程池执行
     * 同步runningSyncCalls直接添加/移除，那么谁来执行call呢？
 * finish()

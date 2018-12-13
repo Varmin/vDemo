@@ -13,7 +13,8 @@ public interface MultipleStatus {
     void showStatusView(View view);
 
 
-
+    void showRefresh();
+    void showRefresh(int layoutId);
 
     void showLoading();
     void showLoading(int layoutId);

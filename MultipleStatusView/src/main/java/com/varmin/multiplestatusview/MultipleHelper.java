@@ -8,6 +8,7 @@ import java.util.HashMap;
  * 文件描述：初始化各个View。
  */
 public class MultipleHelper {
+    public final int DEFAULT_REFRESH_LAYOUT = R.layout.loading_status;
     public final int DEFAULT_LOADING_LAYOUT = R.layout.loading_status;
     public final int DEFAULT_EMPTY_LAYOUT = R.layout.empty_status;
     public final int DEFAULT_ERR_NET_LAYOUT = R.layout.err_net_status;
@@ -32,11 +33,17 @@ public class MultipleHelper {
     }
 
     private void initDefaultMap() {
+        multipleDefaultMap.put(Status.REFRESH, R.layout.refresh_status);
         multipleDefaultMap.put(Status.LOADING, R.layout.loading_status);
         multipleDefaultMap.put(Status.EMPTY, R.layout.empty_status);
         multipleDefaultMap.put(Status.ERR_NET, R.layout.err_net_status);
         multipleDefaultMap.put(Status.ERROR, R.layout.error_status);
         multipleDefaultMap.put(Status.SUCCESS, R.layout.success_status);
+    }
+
+    public MultipleHelper setRefresh(int layoutId){
+        multipleMap.put(Status.REFRESH, layoutId);
+        return this;
     }
 
     public MultipleHelper setLoading(int layoutId){

@@ -97,6 +97,9 @@ public class OkHttpTestActivity extends BaseActivity {
         }).start();
     }
 
+    /**
+     * 异步
+     */
     private void getEnqueue(){
         new Thread(new Runnable() {
             @Override

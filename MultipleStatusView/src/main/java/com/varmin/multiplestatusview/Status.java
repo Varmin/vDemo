@@ -13,6 +13,8 @@ import java.lang.annotation.RetentionPolicy;
 //@StringDef
 @Retention(RetentionPolicy.SOURCE)
 public @interface Status {
+
+    String REFRESH = "refresh";
     String LOADING = "loading";
 
     String ERR_NET = "err_net";
