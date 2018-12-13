@@ -18,6 +18,7 @@ import java.util.Map;
  * Created by HuangYang
  * on 2018/12/12  15:57.
  * 文件描述：
+ * todo: 下拉刷新、点击重试、自定义动画
  */
 public class MultipleStatusView extends FrameLayout implements MultipleStatus{
     private static final String TAG = "MultipleStatusView";
@@ -59,9 +60,9 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
     protected void onFinishInflate() {
         super.onFinishInflate();
 
-        if (getChildCount() != 1) {
-            throw new NoContentViewException();
-        }
+        if (getChildCount() == 0) throw new NoContentViewException();
+        if (getChildCount() > 1) throw new MultipleContentViewException();
+
         mContentView = getChildAt(0);
     }
 

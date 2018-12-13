@@ -7,7 +7,7 @@ package com.varmin.multiplestatusview;
  */
 public class NoContentViewException extends RuntimeException {
     public NoContentViewException() {
-        this("No ContentView Exception");
+        this("No ContentView Exception！You need add a child View in XML.");
     }
 
     public NoContentViewException(String message) {
