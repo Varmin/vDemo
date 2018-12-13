@@ -51,4 +51,12 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.5.0'
+
+    //implementation project(':MultipleStatusView')
+    /*implementation project(':MultipleStatusView') {
+        exclude(group: 'com.android.support', module: 'support-compat')
+    }*/
+    implementation (project(':MultipleStatusView')) {
+        exclude group: 'com.android.support'
+    }
 }

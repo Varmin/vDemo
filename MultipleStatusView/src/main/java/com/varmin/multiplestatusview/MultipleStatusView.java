@@ -4,8 +4,10 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
@@ -18,7 +20,7 @@ import java.util.Map;
  * 文件描述：
  */
 public class MultipleStatusView extends FrameLayout implements MultipleStatus{
-
+    private static final String TAG = "MultipleStatusView";
     private RelativeLayout.LayoutParams DEFAULT_PARAMS = new RelativeLayout.LayoutParams(-1, -1);
     private Map<String, View> statusViewMap = new HashMap<>();
     private LayoutInflater mInflate;
@@ -71,7 +73,6 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
 
 
 
-    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---status---begin--->>>>>>>>>>>>>>>>>>>>>>>>>>
     @Override
     public void showContentView() {
         if (mContentView == null) {
@@ -91,13 +92,14 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
         }
     }
 
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---status---begin--->>>>>>>>>>>>>>>>>>>>>>>>>>
     @Override
     public void showRefresh() {
         int helpId = getHelpView(Status.REFRESH);
         if (checkHelpView(helpId)) {
-            showLoading(helpId);
+            showRefresh(helpId);
         }else {
-            showLoading(getHelpDefaultView(Status.REFRESH));
+            showRefresh(getHelpDefaultView(Status.REFRESH));
         }
     }
 
@@ -105,7 +107,7 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
     public void showRefresh(int layoutId) {
         View refreshView = getViewFromMap(Status.REFRESH);
         if (!checkViewMap(refreshView)) {
-            refreshView = mInflate.inflate(layoutId, this);
+            refreshView = mInflate.inflate(layoutId, this, false);
             addViewToMap(Status.REFRESH, refreshView);
 
             addView(refreshView, DEFAULT_PARAMS);
@@ -114,120 +116,83 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
         showStatusView(refreshView);
     }
 
-    /**
-     * 检查全局配置--N--> 使用全局默认配置
-     */
     @Override
     public void showLoading() {
-        int helpId = getHelpView(Status.LOADING);
-        if (checkHelpView(helpId)) {
-            showLoading(helpId);
-        }else {
-            showLoading(getHelpDefaultView(Status.LOADING));
-        }
+        showStatusView(Status.LOADING);
     }
 
-    /**
-     * 检查是否已经加载了状态View--N--> 添加View
-     */
     @Override
     public void showLoading(int layoutId) {
-        View loadingView = getViewFromMap(Status.LOADING);
-        if (!checkViewMap(loadingView)) {
-            loadingView = mInflate.inflate(layoutId, this);
-            addViewToMap(Status.LOADING, loadingView);
-
-            addView(loadingView, DEFAULT_PARAMS);
-        }
-        showStatusView(loadingView);
+        showStatusView(Status.LOADING, layoutId);
     }
 
     @Override
     public void showEmpty() {
-        int helpId = getHelpView(Status.EMPTY);
-        if (checkHelpView(helpId)) {
-            showEmpty(helpId);
-        }else {
-            showEmpty(getHelpDefaultView(Status.EMPTY));
-        }
+        showStatusView(Status.EMPTY);
     }
 
     @Override
     public void showEmpty(int layoutId) {
-        View emptyView = getViewFromMap(Status.EMPTY);
-        if (!checkViewMap(emptyView)) {
-            emptyView = mInflate.inflate(layoutId, this);
-            addViewToMap(Status.EMPTY, emptyView);
-
-            addView(emptyView, DEFAULT_PARAMS);
-        }
-        showStatusView(emptyView);
+        showStatusView(Status.EMPTY, layoutId);
     }
 
     @Override
     public void showErrNet() {
-        int helpId = getHelpView(Status.ERR_NET);
-        if (checkHelpView(helpId)) {
-            showErrNet(helpId);
-        }else {
-            showErrNet(getHelpDefaultView(Status.ERR_NET));
-        }
+        showStatusView(Status.ERR_NET);
     }
 
     @Override
     public void showErrNet(int layoutId) {
-        View errNetView = getViewFromMap(Status.ERR_NET);
-        if (!checkViewMap(errNetView)) {
-            errNetView = mInflate.inflate(layoutId, this);
-            addViewToMap(Status.ERR_NET, errNetView);
-
-            addView(errNetView, DEFAULT_PARAMS);
-        }
-        showStatusView(errNetView);
+        showStatusView(Status.ERR_NET, layoutId);
     }
 
     @Override
     public void showError() {
-        int helpId = getHelpView(Status.ERROR);
-        if (checkHelpView(helpId)) {
-            showError(helpId);
-        }else {
-            showError(getHelpDefaultView(Status.ERROR));
-        }
+        showStatusView(Status.ERROR);
     }
 
     @Override
     public void showError(int layoutId) {
-        View errorView = getViewFromMap(Status.ERROR);
-        if (!checkViewMap(errorView)) {
-            errorView = mInflate.inflate(layoutId, this);
-            addViewToMap(Status.ERROR, errorView);
-
-            addView(errorView, DEFAULT_PARAMS);
-        }
-        showStatusView(errorView);
+        showStatusView(Status.ERROR, layoutId);
     }
+
 
     @Override
     public void showSuccess() {
-        int helpId = getHelpView(Status.SUCCESS);
-        if (checkHelpView(helpId)) {
-            showSuccess(helpId);
-        }else {
-            showSuccess(getHelpDefaultView(Status.SUCCESS));
-        }
+        showStatusView(Status.SUCCESS);
     }
 
     @Override
     public void showSuccess(int layoutId) {
-        View successView = getViewFromMap(Status.SUCCESS);
-        if (!checkViewMap(successView)) {
-            successView = mInflate.inflate(layoutId, this);
-            addViewToMap(Status.SUCCESS, successView);
+        showStatusView(Status.SUCCESS, layoutId);
+    }
 
-            addView(successView, DEFAULT_PARAMS);
+    /**
+     * 检查全局配置--N--> 使用全局默认配置
+     */
+    private void showStatusView(@Status String state){
+        int helpId = getHelpView(state);
+        if (checkHelpView(helpId)) {
+            showStatusView(state, helpId);
+        }else {
+            showStatusView(state, getHelpDefaultView(state));
         }
-        showStatusView(successView);
+    }
+    /**
+     * 检查是否已经加载了状态View--N--> 添加View
+     */
+    private void showStatusView(@Status String status,  int layoutId){
+        View stateView = getViewFromMap(status);
+        if (!checkViewMap(stateView)) {
+            addViewToMap(status, stateView);
+            //TODO 为什么只有这种方式可以？root和attach到底是什么关系？
+            stateView = mInflate.inflate(layoutId, this, false);
+            addView(stateView, DEFAULT_PARAMS);
+
+//            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) stateView.getLayoutParams();
+//            Log.e(TAG, "showStatusView: "+params.width+", "+params.height+", "+stateView.getMeasuredWidth()+", "+stateView.getMeasuredHeight());
+        }
+        showStatusView(stateView);
     }
     //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<---status---end---<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -243,10 +208,7 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
     }
 
     private boolean checkHelpView(int getHelpView){
-        if (getHelpView == 0) {
-            return false;
-        }
-        return true;
+        return getHelpView == MultipleHelper.DEFAULT_NO_VALUE ? false:true;
     }
 
     private void addViewToMap(@Status String status, View statusView){
@@ -258,10 +220,7 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
     }
 
     private boolean checkViewMap(View status){
-        if (status == null) {
-            return false;
-        }
-        return true;
+        return status == null ? false:true;
     }
 
 

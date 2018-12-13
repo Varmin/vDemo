@@ -1,5 +1,7 @@
 package com.varmin.multiplestatusview;
 
+import android.util.Log;
+
 import java.util.HashMap;
 
 /**
@@ -8,6 +10,8 @@ import java.util.HashMap;
  * 文件描述：初始化各个View。
  */
 public class MultipleHelper {
+    private static final String TAG = "MultipleHelper";
+    public static final int DEFAULT_NO_VALUE = 0;
     public final int DEFAULT_REFRESH_LAYOUT = R.layout.loading_status;
     public final int DEFAULT_LOADING_LAYOUT = R.layout.loading_status;
     public final int DEFAULT_EMPTY_LAYOUT = R.layout.empty_status;
@@ -24,9 +28,11 @@ public class MultipleHelper {
         if (helper == null) {
             helper = new MultipleHelper();
         }
+        Log.e(TAG, "getHelper: helper="+helper.toString() );
         return helper;
     }
     private MultipleHelper(){
+        Log.e(TAG, "MultipleHelper: init map" );
         multipleMap = new HashMap<>();
         initDefaultMap();
     }
@@ -68,10 +74,16 @@ public class MultipleHelper {
     }
 
     public int getView(@Status String status){
-        return multipleMap.get(status);
+        if (multipleMap.get(status) != null) {
+            return multipleMap.get(status);
+        }
+        return DEFAULT_NO_VALUE;
     }
 
     public int getDefault(@Status String status) {
-        return multipleDefaultMap.get(status);
+        if (multipleDefaultMap.get(status) != null) {
+            return multipleDefaultMap.get(status);
+        }
+        return DEFAULT_NO_VALUE;
     }
 }
