@@ -26,22 +26,28 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
     private LayoutInflater mInflate;
     private View mContentView;
     private OnRetryListener mOnRetryListener;
+    private boolean mIsFromXml = true;
 
     public MultipleStatusView(@NonNull Context context) {
         this(context, null);
+
     }
 
     public MultipleStatusView(@NonNull Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
+
     }
 
     public MultipleStatusView(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         initAttr();
         initView();
-
+        //判断View初始化：布局或动态添加
+        setIsFromXml((attrs == null && defStyleAttr == 0) ? false:true);
         Log.d(TAG, "MultipleStatusView: getCount="+getChildCount());
     }
+
+
 
     private void initAttr() {
 
@@ -52,19 +58,40 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
     }
 
     /**
+     * 判断初始化类型：布局、动态生成
+     * @param isFromXml 是否在布局中加载
+     */
+    private void setIsFromXml(boolean isFromXml){
+        this.mIsFromXml = isFromXml;
+        Log.d(TAG, "setIsFromXml: "+mIsFromXml);
+    }
+
+    /**
      * TODO：
      * 1, 布局添加的contentView, 在onFinishInflate检查
      * 2, 动态添加的contentView + tag,在addView时通过tag确定内容View。（肯定有需求，单独类实现）
      */
 
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---type_1:布局添加的contentView, 在onFinishInflate检查---begin--->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     //解析、添加子View完成，setContentView时即使解析、加载的过程。
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
         Log.d(TAG, "onFinishInflate: getCount="+getChildCount());
-        if (getChildCount() == 0) throw new NoContentViewException();
-        if (getChildCount() > 1) throw new MultipleContentViewException();
-        mContentView = getChildAt(0);
+        if(mIsFromXml){
+            if (getChildCount() == 0) throw new NoContentViewException();
+            if (getChildCount() > 1) throw new MultipleContentViewException();
+            mContentView = getChildAt(0);
+        }
+    }
+    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<---type_1:布局添加的contentView, 在onFinishInflate检查---end---<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+    /**
+     * 写入布局的MuiltipleView设置
+     */
+    private void setContentView(View contentView){
+        this.mContentView = contentView;
     }
 
     @Override
