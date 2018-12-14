@@ -4,19 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".others.MultipleSatusActivity">
+    tools:context=".others.MultipleStatusActivity">
 
-
-<com.varmin.multiplestatusview.MultipleStatusView
-    android:id="@+id/msv_view"
-    android:layout_width="300dp"
-    android:layout_height="500dp"
-    android:background="@color/default_color"
-    >
-    <TextView
-        android:id="@+id/tv_content"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="ContentView"/>
-</com.varmin.multiplestatusview.MultipleStatusView>
+    <com.varmin.multiplestatusview.MultipleStatusView
+        android:id="@+id/msv_view"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@color/colorAccent">
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="ContentView" />
+    </com.varmin.multiplestatusview.MultipleStatusView>
 </RelativeLayout>

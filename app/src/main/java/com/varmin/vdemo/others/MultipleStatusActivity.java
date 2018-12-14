@@ -1,6 +1,7 @@
 package com.varmin.vdemo.others;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.varmin.multiplestatusview.MultipleStatusView;
@@ -9,8 +10,8 @@ import com.varmin.vdemo.base.BaseActivity;
 
 import butterknife.BindView;
 
-public class MultipleSatusActivity extends BaseActivity {
-
+public class MultipleStatusActivity extends BaseActivity {
+    private static final String TAG = "MultipleStatusActivity";
     @BindView(R.id.tv_content)
     TextView tvContent;
     @BindView(R.id.msv_view)
@@ -24,6 +25,9 @@ public class MultipleSatusActivity extends BaseActivity {
     @Override
     protected void initData() {
         super.initData();
+
+        Log.d(TAG, "initData: "+msvView.getChildCount());
+
         //todo 为什么xml里不能直接写提示？为什么build要exclude？
         tvContent.postDelayed(new Runnable() {
             @Override
