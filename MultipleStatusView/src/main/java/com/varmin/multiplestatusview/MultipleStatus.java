@@ -9,7 +9,14 @@ import android.view.View;
  * 文件描述：
  */
 public interface MultipleStatus {
+    /**
+     * 显示主View，即内容
+     */
     void showContentView();
+
+    /**
+     * 显示各种状态View
+     */
     void showStatusView(View view);
 
 
@@ -23,8 +30,6 @@ public interface MultipleStatus {
     void showEmpty(int layoutId);
     void showErrNet();
     void showErrNet(int layoutId);
-
-
     void showError();
     void showError(int layoutId);
     void showSuccess();

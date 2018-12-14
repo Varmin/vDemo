@@ -8,11 +8,8 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,7 +21,7 @@ import java.util.Map;
  */
 public class MultipleStatusView extends FrameLayout implements MultipleStatus{
     private static final String TAG = "MultipleStatusView";
-    private RelativeLayout.LayoutParams DEFAULT_PARAMS = new RelativeLayout.LayoutParams(-1, -1);
+    private FrameLayout.LayoutParams DEFAULT_PARAMS = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
     private Map<String, View> statusViewMap = new HashMap<>();
     private LayoutInflater mInflate;
     private View mContentView;
@@ -42,36 +39,44 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
         super(context, attrs, defStyleAttr);
         initAttr();
         initView();
+
+        Log.d(TAG, "MultipleStatusView: getCount="+getChildCount());
     }
 
     private void initAttr() {
 
     }
 
-    /**
-     * TODO ： contentView 时机？子View何时加载进去？
-     */
     private void initView() {
         mInflate = LayoutInflater.from(getContext());
     }
 
     /**
-     * 布局添加的contentView
-     * 动态添加的contentView + tag
+     * TODO：
+     * 1, 布局添加的contentView, 在onFinishInflate检查
+     * 2, 动态添加的contentView + tag,在addView时通过tag确定内容View。（肯定有需求，单独类实现）
      */
+
+    //解析、添加子View完成，setContentView时即使解析、加载的过程。
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-
+        Log.d(TAG, "onFinishInflate: getCount="+getChildCount());
         if (getChildCount() == 0) throw new NoContentViewException();
         if (getChildCount() > 1) throw new MultipleContentViewException();
-
         mContentView = getChildAt(0);
+    }
+
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        Log.d(TAG, "onAttachedToWindow: getCount="+getChildCount());
     }
 
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
+        Log.d(TAG, "onDetachedFromWindow: getCount="+getChildCount());
     }
 
 
@@ -199,11 +204,15 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
     private void showStatusView(@Status final String status, int layoutId){
         View stateView = getViewFromMap(status);
         if (!checkViewMap(stateView)) {
-            //TODO 为什么只有这种方式可以？root和attach到底是什么关系？
+
+            //返回的stateView是FramLayout！
             stateView = mInflate.inflate(layoutId, this, false);
             addView(stateView, DEFAULT_PARAMS);
-//            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) stateView.getLayoutParams();
-//            Log.e(TAG, "showStatusView: "+params.width+", "+params.height+", "+stateView.getMeasuredWidth()+", "+stateView.getMeasuredHeight());
+            //Log.d(TAG, "showStatusView_1: "+stateView.getLayoutParams());
+
+            //返回的stateView是MultipleStatusView！不是FramLayout
+           /* stateView = mInflate.inflate(layoutId, this, true);
+            Log.d(TAG, "showStatusView_2: "+stateView.getLayoutParams());*/
 
             addViewToMap(status, stateView);
 
