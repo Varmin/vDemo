@@ -3,6 +3,7 @@ package com.varmin.multiplestatusview;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,7 +20,7 @@ import java.util.Map;
  * Created by HuangYang
  * on 2018/12/12  15:57.
  * 文件描述：
- * todo: 下拉刷新、点击重试、自定义动画
+ * todo: 下拉刷、自定义动画：（全局、默认、局部）
  */
 public class MultipleStatusView extends FrameLayout implements MultipleStatus{
     private static final String TAG = "MultipleStatusView";
@@ -26,6 +28,7 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
     private Map<String, View> statusViewMap = new HashMap<>();
     private LayoutInflater mInflate;
     private View mContentView;
+    private OnRetryListener mOnRetryListener;
 
     public MultipleStatusView(@NonNull Context context) {
         this(context, null);
@@ -72,8 +75,9 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
     }
 
 
-
-
+    /**
+     * 显示主View，内容
+     */
     @Override
     public void showContentView() {
         if (mContentView == null) {
@@ -85,6 +89,9 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
         }
     }
 
+    /**
+     * 显示状态View
+     */
     @Override
     public void showStatusView(View view) {
         for (int i = 0; i < getChildCount(); i++) {
@@ -93,7 +100,8 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
         }
     }
 
-    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---status---begin--->>>>>>>>>>>>>>>>>>>>>>>>>>
+   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---statusView显示---begin--->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     @Override
     public void showRefresh() {
         int helpId = getHelpView(Status.REFRESH);
@@ -102,6 +110,7 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
         }else {
             showRefresh(getHelpDefaultView(Status.REFRESH));
         }
+
     }
 
     @Override
@@ -168,6 +177,11 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
         showStatusView(Status.SUCCESS, layoutId);
     }
 
+    @Override
+    public void setRetryOnclickListener(OnRetryListener onRetryListener) {
+        this.mOnRetryListener = onRetryListener;
+    }
+
     /**
      * 检查全局配置--N--> 使用全局默认配置
      */
@@ -180,42 +194,70 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
         }
     }
     /**
-     * 检查是否已经加载了状态View--N--> 添加View
+     * 检查是否已经加载了状态View--N--> 添加View，缓存到局部map
      */
-    private void showStatusView(@Status String status,  int layoutId){
+    private void showStatusView(@Status final String status, int layoutId){
         View stateView = getViewFromMap(status);
         if (!checkViewMap(stateView)) {
-            addViewToMap(status, stateView);
             //TODO 为什么只有这种方式可以？root和attach到底是什么关系？
             stateView = mInflate.inflate(layoutId, this, false);
             addView(stateView, DEFAULT_PARAMS);
-
 //            RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) stateView.getLayoutParams();
 //            Log.e(TAG, "showStatusView: "+params.width+", "+params.height+", "+stateView.getMeasuredWidth()+", "+stateView.getMeasuredHeight());
+
+            addViewToMap(status, stateView);
+
+            if ((TextUtils.equals(status, Status.ERR_NET) || TextUtils.equals(status, Status.ERROR))
+                    && mOnRetryListener != null) {
+                    stateView.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mOnRetryListener.onRetryClick(status, v);
+                        }
+                    });
+            }
         }
         showStatusView(stateView);
     }
-    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<---status---end---<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<---statusView显示---end---<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---获取全局、默认配置---begin--->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     /**
-     * 是否有指定的全局状态view_id
+     * 指定全局配置
      */
     private int getHelpView(@Status String status){
         return MultipleHelper.getHelper().getView(status);
     }
 
+    /**
+     * 默认全局配置
+     */
     private int getHelpDefaultView(@Status String status){
         return MultipleHelper.getHelper().getDefault(status);
     }
 
+    /**
+     * 检查全局配置是否有效
+     */
     private boolean checkHelpView(int getHelpView){
         return getHelpView == MultipleHelper.DEFAULT_NO_VALUE ? false:true;
     }
+    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<---获取全局、默认配置---end---<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---获取局部缓存配置---begin--->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    /**
+     * 懒加载
+     * 无论是全局配置，还是单独的自定义statusView配置，加载过后缓存到map中。
+     */
     private void addViewToMap(@Status String status, View statusView){
         statusViewMap.put(status, statusView);
     }
 
+    /**
+     * 直接取加载过的View
+     */
     private View getViewFromMap(@Status String status){
         return statusViewMap.get(status);
     }
@@ -223,6 +265,6 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
     private boolean checkViewMap(View status){
         return status == null ? false:true;
     }
-
+    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<---获取局部缓存配置---end---<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 }

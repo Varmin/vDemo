@@ -27,8 +27,9 @@ public interface MultipleStatus {
 
     void showError();
     void showError(int layoutId);
-    //void showError(int layoutId, RelativeLayout.LayoutParams params);
     void showSuccess();
     void showSuccess(int layoutId);
+
+    void setRetryOnclickListener(OnRetryListener onRetryListener);
 
 }
