@@ -107,31 +107,6 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
     }
 
 
-    /**
-     * 显示主View，内容
-     */
-    @Override
-    public void showContentView() {
-        if (mContentView == null) {
-            throw new NoContentViewException();
-        }
-        for (int i = 0; i < getChildCount(); i++) {
-            View childView = getChildAt(i);
-            childView.setVisibility(childView == mContentView ? VISIBLE:GONE);
-        }
-    }
-
-    /**
-     * 显示状态View
-     */
-    @Override
-    public void showStatusView(View view) {
-        for (int i = 0; i < getChildCount(); i++) {
-            View childView = getChildAt(i);
-            childView.setVisibility(childView == view ? VISIBLE:GONE);
-        }
-    }
-
    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---statusView显示---begin--->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
     @Override
@@ -255,6 +230,29 @@ public class MultipleStatusView extends FrameLayout implements MultipleStatus{
         }
         showStatusView(stateView);
     }
+
+    /**
+     * 显示主View，内容
+     */
+    @Override
+    public void showContentView() {
+        if (mContentView == null) {
+            throw new NoContentViewException();
+        }
+        showStatusView(mContentView);
+    }
+
+    /**
+     * 显示状态View
+     */
+    @Override
+    public void showStatusView(View view) {
+        for (int i = 0; i < getChildCount(); i++) {
+            View childView = getChildAt(i);
+            childView.setVisibility(childView == view ? VISIBLE:GONE);
+        }
+    }
+
     //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<---statusView显示---end---<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
