@@ -45,8 +45,9 @@ public class SMSContentObserver extends ContentObserver {
         super.onChange(selfChange, uri);
         Log.d(TAG, "onChange: "+selfChange+", uri="+uri);
         if (!uri.toString().contains(SMS_INBOX_URI)) return;
-        Cursor cursor = mContext.getContentResolver().query(Uri.parse(SMS_INBOX_URI), null,
-                null, null, Telephony.Sms.Inbox.DEFAULT_SORT_ORDER);
+        String id = uri.toString().replace(SMS_INBOX_URI + "//","");
+        Cursor cursor = mContext.getContentResolver().query(Uri.parse(SMS_INBOX_URI), PROJECTION,
+                "_id=?", new String[]{id}, Telephony.Sms.Inbox.DEFAULT_SORT_ORDER);
         getSmsCodeFromObserver(cursor);
     }
 
@@ -55,15 +56,15 @@ public class SMSContentObserver extends ContentObserver {
         if (cursor == null) return;
         Log.d(TAG, "getSmsCodeFromObserver: cursor="+cursor+", "+cursor.getCount());
         while (cursor.moveToNext()) {
+            String id = cursor.getString(cursor.getColumnIndex(Telephony.Sms._ID));
             String address = cursor.getString(cursor.getColumnIndex(Telephony.Sms.ADDRESS));
             String smsBody = cursor.getString(cursor.getColumnIndex(Telephony.Sms.BODY));
-            Log.d(TAG, "getSmsCodeFromObserver: address="+address+", smsBody="+smsBody);
+            Log.d(TAG, "getSmsCodeFromObserver: id="+id+", address="+address+", smsBody="+smsBody);
             if (!TextUtils.isEmpty(smsBody) && smsBody.contains("优酷")) {
                 String smsCode = parseSmsBody(smsBody);
                 sendCode(smsCode);
-
                 Log.d(TAG, "getSmsCodeFromObserver: smsBody="+smsBody);
-                //break;
+                break;
             }
         }
         cursor.close();
