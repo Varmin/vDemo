@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".others.AutoFillSMSActivity">
+
+    <TextView
+        android:id="@+id/tv_code"
+        style="@style/base_button"
+        android:hint="验证码" />
+
+    <Button
+        android:id="@+id/btn_start"
+        style="@style/base_button"
+        android:text="start" />
+    <Button
+        android:id="@+id/btn_end"
+        style="@style/base_button"
+        android:text="end" />
+</LinearLayout>

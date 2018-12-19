@@ -16,6 +16,7 @@ import butterknife.Unbinder;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private Unbinder mUnBinder;
+    public AppCompatActivity mActivity;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         setContentView(getLayoutId());
         mUnBinder = ButterKnife.bind(this);
+        mActivity = this;
         initData();
     }
 

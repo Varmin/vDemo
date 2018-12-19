@@ -56,7 +56,7 @@ dependencies {
     /*implementation project(':MultipleStatusView') {
         exclude(group: 'com.android.support', module: 'support-compat')
     }*/
-    implementation (project(':MultipleStatusView')) {
+    implementation(project(':MultipleStatusView')) {
         exclude group: 'com.android.support'
     }
 }
