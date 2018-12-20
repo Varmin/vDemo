@@ -6,10 +6,20 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Trace;
 import android.provider.Telephony;
 import android.text.TextUtils;
+import android.util.AttributeSet;
 import android.util.Log;
+import android.util.Xml;
+import android.view.InflateException;
+import android.view.View;
+import android.view.ViewGroup;
 
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -37,7 +47,6 @@ public class SMSContentObserver extends ContentObserver {
         super(handler);
         this.mContext = context;
         this.mHandler = handler;
-        Log.d(TAG, "SMSContentObserver: init");
     }
 
     @Override
@@ -60,7 +69,7 @@ public class SMSContentObserver extends ContentObserver {
             String address = cursor.getString(cursor.getColumnIndex(Telephony.Sms.ADDRESS));
             String smsBody = cursor.getString(cursor.getColumnIndex(Telephony.Sms.BODY));
             Log.d(TAG, "getSmsCodeFromObserver: id="+id+", address="+address+", smsBody="+smsBody);
-            if (!TextUtils.isEmpty(smsBody) && smsBody.contains("优酷")) {
+            if (!TextUtils.isEmpty(smsBody) && smsBody.contains("菩提果")) {
                 String smsCode = parseSmsBody(smsBody);
                 sendCode(smsCode);
                 Log.d(TAG, "getSmsCodeFromObserver: smsBody="+smsBody);
@@ -93,7 +102,6 @@ public class SMSContentObserver extends ContentObserver {
             mHandler.sendMessage(msg);
         }
     }
-
 
 
 }
