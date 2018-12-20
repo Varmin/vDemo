@@ -51,14 +51,15 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.5.0'
-
     //implementation project(':MultipleStatusView')
     /*implementation project(':MultipleStatusView') {
-        exclude(group: 'com.android.support', module: 'support-compat')
-    }*/
+            exclude(group: 'com.android.support', module: 'support-compat')
+        }*/
     implementation(project(':MultipleStatusView')) {
         exclude group: 'com.android.support'
     }
-
+    implementation(project(':PermissionApply')) {
+        exclude group: 'com.android.support'
+    }
     implementation 'tech.michaelx.authcode:authcode:1.0.1'
 }

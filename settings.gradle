@@ -1,1 +1,1 @@
-include ':app', ':JavaPro', ':MultipleStatusView'
+include ':app', ':JavaPro', ':MultipleStatusView', ':PermissionApply'

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JavaPro/JavaPro.iml" filepath="$PROJECT_DIR$/JavaPro/JavaPro.iml" />
       <module fileurl="file://$PROJECT_DIR$/MultipleStatusView/MultipleStatusView.iml" filepath="$PROJECT_DIR$/MultipleStatusView/MultipleStatusView.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PermissionApply/PermissionApply.iml" filepath="$PROJECT_DIR$/PermissionApply/PermissionApply.iml" />
       <module fileurl="file://$PROJECT_DIR$/VDemo.iml" filepath="$PROJECT_DIR$/VDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
