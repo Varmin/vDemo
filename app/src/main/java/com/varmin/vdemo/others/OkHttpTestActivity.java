@@ -64,7 +64,6 @@ public class OkHttpTestActivity extends BaseActivity {
             }
         }).start();
     }
-
     public void postExecute(){
         new Thread(new Runnable() {
             @Override
