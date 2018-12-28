@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Button;
 
+import com.varmin.permissionapply.PermissionCallback;
 import com.varmin.permissionapply.PermissionUtils;
 import com.varmin.permissionapply.Permissions;
 import com.varmin.vdemo.R;
@@ -31,7 +32,7 @@ public class PermissionActivity extends BaseActivity{
 
     @OnClick(R.id.tv_permission)
     public void onViewClicked() {
-        mPermsUtils.setOnPermissionCallback(new PermissionUtils.PermissionCallback() {
+        mPermsUtils.setOnPermissionCallback(new PermissionCallback() {
             @Override
             public void singlePermission(int requestCode, boolean hasPermission, @NonNull String permission) {
                 Log.d(TAG, "singlePermission: "+hasPermission+", "+permission);

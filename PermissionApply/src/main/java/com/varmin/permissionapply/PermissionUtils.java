@@ -1,9 +1,7 @@
 package com.varmin.permissionapply;
 
-import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -11,9 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -26,7 +22,6 @@ public class PermissionUtils {
     public static final int REQUEST_CODE = 1111;
 
     private final Activity mActivity;
-
     private final PermissionUtils mInstance;
     private String[] mPermissions;
     private PermissionCallback mPermissionCallBack;
@@ -39,8 +34,9 @@ public class PermissionUtils {
     public void applyPermissions(@NonNull String... perms){
         this.mPermissions = perms;
         if (perms == null || (perms != null && perms.length == 0)) {
-            return;
+            throw new IllegalArgumentException("Can't check permissions for null");
         }
+
         List<String> noPermissionList = hasPermissions(perms);
         if (noPermissionList.size() != 0) {
             ActivityCompat.requestPermissions(mActivity, noPermissionList.toArray(new String[noPermissionList.size()]), REQUEST_CODE);
@@ -55,10 +51,10 @@ public class PermissionUtils {
     }
 
     public List<String> hasPermissions(@NonNull String... perms){
-        ArrayList<String> moPermissionList = new ArrayList<>();
+        ArrayList<String> noPermissionList = new ArrayList<>();
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
             Log.w(TAG, "hasPermissions: API version < M, returning true by default");
-            return moPermissionList;
+            return noPermissionList;
         }
         if (mActivity == null) {
             throw new IllegalArgumentException("Can't check permissions for null context");
@@ -68,11 +64,11 @@ public class PermissionUtils {
         for (String perm : perms) {
             if (ContextCompat.checkSelfPermission(mActivity, perm) != PackageManager.PERMISSION_GRANTED) {
                 hasPermissons = false;
-                moPermissionList.add(perm);
+                noPermissionList.add(perm);
             }
         }
-        Log.d(TAG, "hasPermissions_1: moPermissionList="+moPermissionList.size()+", hasPermissons="+hasPermissons);
-        return moPermissionList;
+        Log.d(TAG, "hasPermissions_1: moPermissionList="+noPermissionList.size()+", hasPermissons="+hasPermissons);
+        return noPermissionList;
     }
 
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults){
@@ -138,12 +134,6 @@ public class PermissionUtils {
         alertBuilder.create().show();
     }
 
-    //todo 为什么在EasyPermissions中ActivityCompat源码指向support-compat-26.1.0有注释有什么的，在这里ActivityCompat指向class.jar包，没注释，没变量名
-    public interface PermissionCallback{
-        void singlePermission(int requestCode, boolean hasPermission,  @NonNull String permission);
-        void hasAllPermissions(int requestCode, @NonNull String[] perms);
-        void permissionStatus(int requestCode, @NonNull String[] permsGranted, @NonNull String[] permsDenied);
-    }
     public PermissionUtils setOnPermissionCallback(PermissionCallback callback){
         this.mPermissionCallBack = callback;
         return mInstance;
