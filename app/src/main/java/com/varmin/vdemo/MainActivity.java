@@ -8,6 +8,7 @@ import com.varmin.vdemo.base.Utils;
 import com.varmin.vdemo.henCoder.HenCoderMainActivity;
 import com.varmin.vdemo.others.LoadBigBitmapActivity;
 
+import apro.com.varmin.lib_1.Lib_1;
 import butterknife.OnClick;
 
 
