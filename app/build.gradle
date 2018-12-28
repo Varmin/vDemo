@@ -52,18 +52,25 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.5.0'
-    //todo 为什么有support重复，那么其他library怎么不重复？
-    implementation(project(':MultipleStatusView')) {
-        exclude group: 'com.android.support'
-    }
-    implementation(project(':PermissionApply')) {
-        exclude group: 'com.android.support'
-    }
     //自动填写验证码
     implementation 'tech.michaelx.authcode:authcode:1.0.1'
     //todo vdemoSDK=26，librarySDK=28，sync资源报错。
     // 那么除了这种每次都exclude，还有什么办法？不是按最高的版本引入么，为什么会出现版本冲突？
     implementation('pub.devrel:easypermissions:2.0.0') {
+        exclude group: 'com.android.support'
+    }
+
+    //todo 为什么有support重复，那么其他library怎么不重复？
+    /*implementation project(':CommonLib:lib_1')
+    implementation project(':CommonLib:MultipleStatusView')
+    implementation project(':CommonLib:PermissionApply')*/
+    implementation(project(':CommonLib:lib_1')) {
+        exclude group: 'com.android.support'
+    }
+    implementation(project(':CommonLib:MultipleStatusView')) {
+        exclude group: 'com.android.support'
+    }
+    implementation(project(':CommonLib:PermissionApply')) {
         exclude group: 'com.android.support'
     }
 }
