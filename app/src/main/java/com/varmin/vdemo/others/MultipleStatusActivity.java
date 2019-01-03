@@ -6,8 +6,6 @@ import android.widget.TextView;
 import com.varmin.multiplestatusview.MultipleStatusView;
 import com.varmin.vdemo.R;
 import com.varmin.vdemo.base.BaseActivity;
-
-import apro.com.varmin.lib_1.Lib_1;
 import butterknife.BindView;
 
 public class MultipleStatusActivity extends BaseActivity {

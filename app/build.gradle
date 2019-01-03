@@ -61,16 +61,13 @@ dependencies {
     }
 
     //todo 为什么有support重复，那么其他library怎么不重复？
-    /*implementation project(':CommonLib:lib_1')
-    implementation project(':CommonLib:MultipleStatusView')
-    implementation project(':CommonLib:PermissionApply')*/
     implementation(project(':CommonLib:lib_1')) {
         exclude group: 'com.android.support'
     }
-    implementation(project(':CommonLib:MultipleStatusView')) {
+    implementation(project(':CommonLibs:MultipleStatusView')) {
         exclude group: 'com.android.support'
     }
-    implementation(project(':CommonLib:PermissionApply')) {
+    implementation(project(':CommonLibs:ApplyPermissions')) {
         exclude group: 'com.android.support'
     }
 }

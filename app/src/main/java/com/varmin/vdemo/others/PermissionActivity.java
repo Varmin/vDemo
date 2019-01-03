@@ -47,7 +47,9 @@ public class PermissionActivity extends BaseActivity{
             public void permissionStatus(int requestCode, @NonNull String[] permsGranted, @NonNull String[] permsDenied) {
                 Log.d(TAG, "permissionStatus: "+permsGranted.length+", "+permsDenied.length);
             }
-        }).applyPermissions(Permissions.ACCESS_COARSE_LOCATION);
+        }).applyPermissions(Permissions.ACCESS_COARSE_LOCATION
+        , Permissions.CAMERA
+        , Permissions.CALL_PHONE);
     }
 
     @Override

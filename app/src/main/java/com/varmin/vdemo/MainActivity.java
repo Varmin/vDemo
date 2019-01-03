@@ -2,13 +2,10 @@ package com.varmin.vdemo;
 
 import android.view.View;
 
-import com.varmin.permissionapply.Permissions;
 import com.varmin.vdemo.base.BaseActivity;
 import com.varmin.vdemo.base.Utils;
 import com.varmin.vdemo.henCoder.HenCoderMainActivity;
 import com.varmin.vdemo.others.LoadBigBitmapActivity;
-
-import apro.com.varmin.lib_1.Lib_1;
 import butterknife.OnClick;
 
 
