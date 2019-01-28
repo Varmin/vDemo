@@ -2,6 +2,7 @@ package com.varmin.vdemo;
 
 import android.view.View;
 
+import com.ptbaby.applypermissions.PermissionUtils;
 import com.varmin.vdemo.base.BaseActivity;
 import com.varmin.vdemo.base.Utils;
 import com.varmin.vdemo.henCoder.HenCoderMainActivity;

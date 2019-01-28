@@ -4,9 +4,9 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Button;
 
-import com.varmin.permissionapply.PermissionCallback;
-import com.varmin.permissionapply.PermissionUtils;
-import com.varmin.permissionapply.Permissions;
+import com.ptbaby.applypermissions.PermissionUtils;
+import com.ptbaby.applypermissions.Permissions;
+import com.ptbaby.applypermissions.callback.PermissionCallback;
 import com.varmin.vdemo.R;
 import com.varmin.vdemo.base.BaseActivity;
 import butterknife.BindView;
@@ -18,7 +18,6 @@ public class PermissionActivity extends BaseActivity{
     @BindView(R.id.tv_permission)
     Button tvPermission;
     private PermissionUtils mPermsUtils;
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_permission;
@@ -27,24 +26,28 @@ public class PermissionActivity extends BaseActivity{
     @Override
     protected void initData() {
         super.initData();
+
         mPermsUtils = new PermissionUtils(this);
     }
 
     @OnClick(R.id.tv_permission)
     public void onViewClicked() {
-        mPermsUtils.setOnPermissionCallback(new PermissionCallback() {
+        mPermsUtils.setOnPermissionCallback(new PermissionCallback(){
             @Override
             public void singlePermission(int requestCode, boolean hasPermission, @NonNull String permission) {
+                super.singlePermission(requestCode, hasPermission, permission);
                 Log.d(TAG, "singlePermission: "+hasPermission+", "+permission);
             }
 
             @Override
             public void hasAllPermissions(int requestCode, @NonNull String[] perms) {
+                super.hasAllPermissions(requestCode, perms);
                 Log.d(TAG, "hasAllPermissions: "+perms.length);
             }
 
             @Override
-            public void permissionStatus(int requestCode, @NonNull String[] permsGranted, @NonNull String[] permsDenied) {
+            public void permissionGrantedOrDenied(int requestCode, @NonNull String[] permsGranted, @NonNull String[] permsDenied) {
+                super.permissionGrantedOrDenied(requestCode, permsGranted, permsDenied);
                 Log.d(TAG, "permissionStatus: "+permsGranted.length+", "+permsDenied.length);
             }
         }).applyPermissions(Permissions.ACCESS_COARSE_LOCATION

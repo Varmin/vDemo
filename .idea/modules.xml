@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$USER_HOME$/ptg/common/CommonLibs/ApplyPermissions/ApplyPermissions.iml" filepath="$USER_HOME$/ptg/common/CommonLibs/ApplyPermissions/ApplyPermissions.iml" />
+      <module fileurl="file://$USER_HOME$/ptg/common/CommonLibs/Common/Common.iml" filepath="$USER_HOME$/ptg/common/CommonLibs/Common/Common.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../common_libs/CommonLib/CommonLib.iml" filepath="$PROJECT_DIR$/../../common_libs/CommonLib/CommonLib.iml" />
       <module fileurl="file://$USER_HOME$/ptg/common/CommonLibs/CommonLibs.iml" filepath="$USER_HOME$/ptg/common/CommonLibs/CommonLibs.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaPro/JavaPro.iml" filepath="$PROJECT_DIR$/JavaPro/JavaPro.iml" />

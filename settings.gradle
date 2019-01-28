@@ -2,5 +2,6 @@ include ':app', ':JavaPro',':CommonLib',':CommonLibs'
 project(':CommonLib').projectDir = new File('/Users/varmin/code/common_libs/CommonLib')
 include ':CommonLib:lib_1'
 project(':CommonLibs').projectDir = new File('/Users/varmin/ptg/common/CommonLibs')
-include ':CommonLibs:MultipleStatusView'
 include ':CommonLibs:ApplyPermissions'
+include ':CommonLibs:MultipleStatusView'
+include ':CommonLibs:Common'

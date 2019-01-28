@@ -4,6 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import com.ptbaby.applypermissions.Permissions;
+import com.putibaby.common.media.MediaSelect;
 import com.varmin.vdemo.R;
 import com.varmin.vdemo.test.daggerTest.DaggerFoodComponent;
 import com.varmin.vdemo.test.daggerTest.DaggerZaiNanComponent;
@@ -12,6 +15,8 @@ import com.varmin.vdemo.test.daggerTest.Girl;
 import com.varmin.vdemo.test.daggerTest.ZaiNanComponent;
 
 import javax.inject.Inject;
+
+import apro.com.varmin.lib_1.Lib_1;
 
 public class TestActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "TestActivity";
@@ -34,6 +39,9 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
                 .foodComponent(foodComponent)
                 .build();
         component.inject(this);
+
+        Lib_1 lib_1 = new Lib_1();
+        String a = Permissions.ACCESS_COARSE_LOCATION;
     }
 
     @Override

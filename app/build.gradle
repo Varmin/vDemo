@@ -5,7 +5,7 @@ android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.varmin.vdemo"
-        minSdkVersion 26
+        minSdkVersion 16
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -68,6 +68,9 @@ dependencies {
         exclude group: 'com.android.support'
     }
     implementation(project(':CommonLibs:ApplyPermissions')) {
+        exclude group: 'com.android.support'
+    }
+    implementation(project(':CommonLibs:Common')) {
         exclude group: 'com.android.support'
     }
 }
