@@ -18,7 +18,7 @@ import com.varmin.vdemo.R;
 import java.util.List;
 
 public class MediaPermissionActivity extends Activity {
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "MediaPermissionActivity";
     private MediaPermissionActivity mActivity;
     private List<String> mSelectedList;
     private PermissionUtils pUtils;
@@ -52,40 +52,48 @@ public class MediaPermissionActivity extends Activity {
             @Override
             public void onClick(View v) {
                 MediaSelect.getInstance(mActivity)
-                        .setItemsType(new MediaSelect.MediaTypeClickListener() {
+                        .setMediaTypeListener(new MediaSelect.MediaTypeClickListener(){
                             @Override
                             public void albumCustom(List<String> imagePathList) {
                                 super.albumCustom(imagePathList);
                                 mSelectedList = imagePathList;
                                 for (String s : imagePathList) {
-                                    Log.d(TAG, "albumCustom: "+s);
+                                    Log.d(TAG, "type_albumCustom: "+s);
                                 }
                             }
 
                             @Override
                             public void cameraPhoto(String imagePath) {
                                 super.cameraPhoto(imagePath);
-                                Log.d(TAG, "cameraPhoto: "+imagePath);
+                                Log.d(TAG, "type_cameraPhoto: "+imagePath);
                             }
 
                             @Override
                             public void cropPhoto(String photoPath, String cropPhotoPath) {
                                 super.cropPhoto(photoPath, cropPhotoPath);
-                                Log.d(TAG, "cameraCropPhoto: "+photoPath+", "+cropPhotoPath);
+                                Log.d(TAG, "type_cameraCropPhoto: "+photoPath+", "+cropPhotoPath);
                             }
 
                             @Override
                             public void cancel(int requestCode, int resultCode, String msg) {
                                 super.cancel(requestCode, resultCode, msg);
-                                Log.d(TAG, "cancel: msg="+msg);
+                                Log.d(TAG, "type_cancel: msg="+msg);
+                            }
+
+                            @Override
+                            public void noPermissions(String type) {
+                                super.noPermissions(type);
+                                Log.d(TAG, "noPermissions: type="+type);
                             }
 
                             @Override
                             public void error(String type, String msg) {
                                 super.error(type, msg);
+                                Log.d(TAG, "error: type="+type+", msg="+msg);
                             }
-                        }, Type.ALBUM_CUSTOM,Type.ALBUM_CLIP_CUSTOM,  Type.CAMERA_PHOTO, Type.CAMERA_CLIP_PHOTO)
-                        .setPickInfo(5, null)
+                        })
+                        .setItemsType(Type.ALBUM_CUSTOM,Type.ALBUM_CLIP_CUSTOM,  Type.CAMERA_PHOTO, Type.CAMERA_CLIP_PHOTO)
+                        .setPickInfo(5, mSelectedList)
                         .show();
             }
         });
