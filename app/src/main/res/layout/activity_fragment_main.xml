@@ -8,9 +8,13 @@
     tools:context=".others.MediaPermissionActivity">
 
     <Button
-        android:id="@+id/btn_get"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="click"
+        android:id="@+id/add_remove"
+        style="@style/base_button"
+        android:text="add/remove"
+        />
+    <Button
+        android:id="@+id/adapter"
+        style="@style/base_button"
+        android:text="adapter"
         />
 </LinearLayout>

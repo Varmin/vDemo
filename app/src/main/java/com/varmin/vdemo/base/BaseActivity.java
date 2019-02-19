@@ -13,7 +13,7 @@ import butterknife.Unbinder;
  * 文件描述：
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends BaseLifeActivity {
 
     private Unbinder mUnBinder;
     public AppCompatActivity mActivity;
@@ -21,7 +21,6 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(getLayoutId());
         mUnBinder = ButterKnife.bind(this);
         mActivity = this;

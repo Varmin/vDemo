@@ -1,23 +1,14 @@
 package com.varmin.vdemo.fragment;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 
-import com.putibaby.common.video.VideoRecordActivity;
+import android.view.View;
 import com.varmin.vdemo.R;
 import com.varmin.vdemo.base.BaseActivity;
+import com.varmin.vdemo.base.Utils;
 
-import butterknife.BindView;
+import butterknife.OnClick;
 
 public class FragmentMainActivity extends BaseActivity {
-    private static final String TAG = "FragmentMainActivity";
-    @BindView(R.id.btn_get)
-    TextView tvGet;
-
     @Override
     protected int getLayoutId() {
         return R.layout.activity_fragment_main;
@@ -26,23 +17,17 @@ public class FragmentMainActivity extends BaseActivity {
     @Override
     protected void initData() {
         super.initData();
-        SharedPreferences sp = getSharedPreferences("varmin", Context.MODE_PRIVATE);
-
-        tvGet.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivityForResult(new Intent(FragmentMainActivity.this, VideoRecordActivity.class), 111);
-            }
-        });
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Log.d(TAG, "onActivityResult: data="+data);
-        if (requestCode == 111) {
-            String dataStr = data.getStringExtra("data");
-            Log.d(TAG, "onActivityResult: dataStr="+dataStr);
+
+    @OnClick({R.id.add_remove, R.id.adapter})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.add_remove:
+                Utils.startActivity(this, ManaFragmentActivity.class);
+                break;
+            case R.id.adapter:
+                break;
         }
     }
 }
