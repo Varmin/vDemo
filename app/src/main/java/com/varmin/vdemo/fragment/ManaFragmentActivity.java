@@ -210,10 +210,8 @@ public class ManaFragmentActivity extends BaseActivity implements TransArguments
             getSupportFragmentManager().beginTransaction()
                     .remove(fragments.get(fragments.size() - 1))
                     .commitNow();
-            //commit异步，拿到的可能还是remove之前的个数
             getFgList();
         }
-
     }
 
     private void add(String tag) {
@@ -266,4 +264,8 @@ public class ManaFragmentActivity extends BaseActivity implements TransArguments
             fragment.setText("Act -> Frag Argus "+ ++argCc);
         }
     }
+
+
+
+
 }

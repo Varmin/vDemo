@@ -1,28 +1,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/base_app_bg"
-    android:id="@+id/rl_root">
-    <Button
-        android:id="@+id/btn_finish"
-        style="@style/base_text"
-        android:text="返回"/>
-
+    android:background="@color/base_app_bg">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical">
         <EditText
-            android:visibility="gone"
             android:id="@+id/et_nick_name"
             style="@style/base_text"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:gravity="left|center_vertical"
             android:layout_marginBottom="10dp"/>
         <EditText
             android:id="@+id/et_input"
             style="@style/base_text"
+            android:gravity="left|center_vertical"
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
 
@@ -32,5 +27,17 @@
             android:text="下一步" />
     </LinearLayout>
 
-
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/base_text"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/btn_finish"
+        />
+    <FrameLayout
+        android:visibility="gone"
+        android:layout_below="@+id/tv_title"
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/base_app_bg"/>
 </RelativeLayout>

@@ -21,6 +21,8 @@ public abstract class BaseLifeFragment extends Fragment {
     private Context mContext;
     private FragmentActivity mActivity;
     private Unbinder unbinder;
+    //是否处理返回按键
+    private boolean mBackHandle;
 
     public boolean isLog(boolean isLog) {
         this.mIsLog = isLog;
@@ -131,4 +133,8 @@ public abstract class BaseLifeFragment extends Fragment {
         return mActivity;
     }
 
+    public void setBackHandle(boolean isHandle){
+        this.mBackHandle = isHandle;
+    }
+    public boolean getBackHandle(){return mBackHandle;}
 }

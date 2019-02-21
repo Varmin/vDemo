@@ -5,7 +5,6 @@ import android.view.View;
 import com.varmin.vdemo.R;
 import com.varmin.vdemo.base.BaseActivity;
 import com.varmin.vdemo.base.Utils;
-
 import butterknife.OnClick;
 
 public class FragmentMainActivity extends BaseActivity {
@@ -27,6 +26,7 @@ public class FragmentMainActivity extends BaseActivity {
                 Utils.startActivity(this, ManaFragmentActivity.class);
                 break;
             case R.id.adapter:
+                Utils.startActivity(this, LoginActivity.class);
                 break;
         }
     }

@@ -1,8 +1,15 @@
 package com.varmin.vdemo.base;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.widget.Toast;
+
+import java.util.List;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -42,4 +49,35 @@ public abstract class BaseActivity extends BaseLifeActivity {
     protected AppCompatActivity getActivity(){
         return this;
     }
+
+    public void showToast(String toast){
+        Toast.makeText(mActivity, toast, Toast.LENGTH_SHORT).show();
+    }
+
+    //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---Fragment信息---begin--->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    public void getFragStatus(){
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getFragmentList();
+                getFragmentBackStackList();
+            }
+        }, 500);
+    }
+    public void getFragmentList() {
+        List<Fragment> fragments = getSupportFragmentManager().getFragments();
+        Log.d(TAG, "getFragList: " + fragments.size());
+        for (Fragment fragment : fragments) {
+            Log.d(TAG, "getFragList: " + fragment.getTag());
+        }
+    }
+    public void getFragmentBackStackList() {
+        int bsCount = getSupportFragmentManager().getBackStackEntryCount();
+        Log.d(TAG, "getBackStackList: size="+bsCount);
+        for (int i = 0; i < bsCount; i++) {
+            FragmentManager.BackStackEntry entry = getSupportFragmentManager().getBackStackEntryAt(i);
+            Log.d(TAG, "getBackStackList: "+entry.getName()+", "+entry.getBreadCrumbTitle());
+        }
+    }
+    //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<---Fragment信息---end---<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 }
