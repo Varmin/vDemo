@@ -78,6 +78,7 @@ public class LoginActivity extends BaseActivity implements Fragment_2.JumpTypeLi
         flContainer.setVisibility(View.VISIBLE);
         tvTitle.setText("输入手机号");
         getSupportFragmentManager().beginTransaction()
+                .setCustomAnimations(R.animator.enter_anim, R.animator.exit_anim, R.animator.pop_enter, R.animator.pop_exit)
                 .add(R.id.fl_container, Fragment_2.newInstance(Fragment_2.TYPE_PHONE, ""), Fragment_2.TYPE_PHONE)
                 .addToBackStack("back_stack_"+ Fragment_2.TYPE_PHONE)
                 .commit();
@@ -91,6 +92,7 @@ public class LoginActivity extends BaseActivity implements Fragment_2.JumpTypeLi
             case Fragment_2.TYPE_SECURITY:
                 tvTitle.setText("输入验证码");
                 getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.animator.enter_anim, R.animator.exit_anim, R.animator.pop_enter, R.animator.pop_exit)
                         .add(R.id.fl_container, Fragment_2.newInstance(type, args), type)
                         .addToBackStack("back_stack_"+type)
                         .commit();
@@ -98,11 +100,15 @@ public class LoginActivity extends BaseActivity implements Fragment_2.JumpTypeLi
             case Fragment_2.TYPE_PASSWORD:
                 tvTitle.setText("输入密码、昵称");
                 getSupportFragmentManager().beginTransaction()
+                        .setCustomAnimations(R.animator.enter_anim, R.animator.exit_anim, R.animator.pop_enter, R.animator.pop_exit)
                         .add(R.id.fl_container, Fragment_2.newInstance(type, args), type)
                         .addToBackStack("back_stack_"+type)
                         .commit();
                 break;
             case Fragment_2.TYPE_DONE:
+                for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+                    getSupportFragmentManager().popBackStack();
+                }
                 flContainer.setVisibility(View.GONE);
                 String[] ags = args.split("_");
                 isDone = true;

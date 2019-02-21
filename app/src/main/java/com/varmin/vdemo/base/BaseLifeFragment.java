@@ -16,7 +16,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public abstract class BaseLifeFragment extends Fragment {
-    public static String TAG = "BaseLifeFragment";
+    public  String TAG = "BaseLifeFragment";
     private boolean mIsLog = true;
     private Context mContext;
     private FragmentActivity mActivity;
@@ -34,9 +34,9 @@ public abstract class BaseLifeFragment extends Fragment {
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---life---begin--->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     @Override
     public void onAttach(Context context) {
+        TAG = getClass().getSimpleName();
         if (mIsLog) Log.d(TAG, "onAttach: ----------------begin");
         super.onAttach(context);
-        TAG = getClass().getSimpleName();
         this.mContext = context;
         this.mActivity = getActivity();
         if (mIsLog) Log.d(TAG, "onAttach: ----------------end");
