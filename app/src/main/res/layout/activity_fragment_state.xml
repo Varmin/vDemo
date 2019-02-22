@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.FragmentStateActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+        <FrameLayout
+            android:id="@+id/fl_state_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+        <TextView
+            android:id="@+id/tv_state_info"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_state_show"
+            style="@style/base_button_hor"
+            android:text="show_2" />
+
+        <Button
+            android:id="@+id/btn_state_hide"
+            style="@style/base_button_hor"
+            android:text="hide_2" />
+        <Button
+            android:id="@+id/btn_state_replace"
+            style="@style/base_button_hor"
+            android:text="replace_3" />
+        <Button
+            android:id="@+id/btn_state_go"
+            style="@style/base_button_hor"
+            android:text="跳转" />
+    </LinearLayout>
+</LinearLayout>

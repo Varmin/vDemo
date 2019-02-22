@@ -16,17 +16,24 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public abstract class BaseLifeFragment extends Fragment {
-    public  String TAG = "BaseLifeFragment";
-    private boolean mIsLog = true;
+    public String TAG = "BaseLifeFragment";
+    private boolean mIsLog = false;
+    private boolean mIsAll = false;
     private Context mContext;
     private FragmentActivity mActivity;
     private Unbinder unbinder;
     //是否处理返回按键
     private boolean mBackHandle;
 
-    public boolean isLog(boolean isLog) {
+    public void isLog(boolean isLog) {
+        isLog(isLog, true);
+    }
+    public void isAll(boolean isAll) {
+        isLog(true, isAll);
+    }
+    public void isLog(boolean isLog, boolean isAll) {
         this.mIsLog = isLog;
-        return mIsLog;
+        this.mIsAll = isAll;
     }
 
     private BaseLifeViewModel mViewModel;
@@ -39,14 +46,16 @@ public abstract class BaseLifeFragment extends Fragment {
         super.onAttach(context);
         this.mContext = context;
         this.mActivity = getActivity();
-        if (mIsLog) Log.d(TAG, "onAttach: ----------------end");
+        parseArguments();
+        if (mIsLog && mIsAll) Log.d(TAG, "onAttach: ----------------end");
     }
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         if (mIsLog) Log.d(TAG, "onCreate: ----------------begin");
         super.onCreate(savedInstanceState);
-        if (mIsLog) Log.d(TAG, "onCreate: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onCreate: ----------------end");
     }
 
     @Override
@@ -63,7 +72,7 @@ public abstract class BaseLifeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         if (mIsLog) Log.d(TAG, "onActivityCreated: ----------------begin");
         super.onActivityCreated(savedInstanceState);
-        if (mIsLog) Log.d(TAG, "onActivityCreated: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onActivityCreated: ----------------end");
         mViewModel = ViewModelProviders.of(this).get(BaseLifeViewModel.class);
         // TODO: Use the ViewModel
     }
@@ -73,35 +82,55 @@ public abstract class BaseLifeFragment extends Fragment {
     public void onStart() {
         if (mIsLog) Log.d(TAG, "onStart: ----------------begin");
         super.onStart();
-        if (mIsLog) Log.d(TAG, "onStart: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onStart: ----------------end");
     }
+
+
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        if (mIsLog) Log.w(TAG, "onViewStateRestored: ----------------begin");
+        super.onViewStateRestored(savedInstanceState);
+        if (mIsLog && mIsAll) Log.w(TAG, "onViewStateRestored: ----------------end");
+    }
+
+
 
     @Override
     public void onResume() {
         if (mIsLog) Log.d(TAG, "onResume: ----------------begin");
         super.onResume();
-        if (mIsLog) Log.d(TAG, "onResume: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onResume: ----------------end");
     }
 
     @Override
     public void onPause() {
         if (mIsLog) Log.d(TAG, "onPause: ----------------begin");
         super.onPause();
-        if (mIsLog) Log.d(TAG, "onPause: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onPause: ----------------end");
+    }
+
+
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        if (mIsLog) Log.w(TAG, "onSaveInstanceState: ----------------begin");
+        super.onSaveInstanceState(outState);
+        if (mIsLog && mIsAll) Log.w(TAG, "onSaveInstanceState: ----------------end");
     }
 
     @Override
     public void onStop() {
         if (mIsLog) Log.d(TAG, "onStop: ----------------begin");
         super.onStop();
-        if (mIsLog) Log.d(TAG, "onStop: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onStop: ----------------end");
     }
 
     @Override
     public void onDestroyView() {
         if (mIsLog) Log.d(TAG, "onDestroyView: ----------------begin");
         super.onDestroyView();
-        if (mIsLog) Log.d(TAG, "onDestroyView: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onDestroyView: ----------------end");
     }
 
     @Override
@@ -111,17 +140,18 @@ public abstract class BaseLifeFragment extends Fragment {
         if (unbinder != null) {
             unbinder.unbind();
         }
-        if (mIsLog) Log.d(TAG, "onDestroy: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onDestroy: ----------------end");
     }
 
     @Override
     public void onDetach() {
         if (mIsLog) Log.d(TAG, "onDetach: ----------------begin");
         super.onDetach();
-        if (mIsLog) Log.d(TAG, "onDetach: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onDetach: ----------------end");
     }
 
     //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<---life---end---<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+    public abstract void parseArguments();
     public abstract int getLayoutId();
     public abstract void initView(View mView);
 

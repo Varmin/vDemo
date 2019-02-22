@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".fragment.LoginActivity"
+            android:name=".fragment.FragmentMainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,20 +37,21 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/take_photo" />
         </provider>
-        <!-- <activity android:name=".henCoder.CustomViewActivity"></activity> -->
-        <!-- <activity android:name=".others.LoadBigBitmapActivity"></activity> -->
-        <!-- <activity android:name=".others.OkHttpTestActivity"></activity> -->
-        <!-- <activity android:name=".henCoder.ScalableImageActivity"></activity> -->
-        <!-- <activity android:name=".test.TestActivity"></activity> -->
-        <!-- <activity android:name=".henCoder.MutilPointActivity"></activity> -->
-        <!-- <activity android:name=".others.RxJava2TestActivity"></activity> -->
-        <!-- <activity android:name=".others.MultipleStatusActivity"></activity> -->
-        <!-- <activity android:name=".others.AutoFillSMSActivity"></activity> -->
-        <!-- <activity android:name=".others.PermissionActivity"></activity> -->
-        <!-- <activity android:name=".others.MediaPermissionActivity" /> -->
-        <!-- <activity android:name=".fragment.FragmentMainActivity" /> -->
-        <!-- <activity android:name=".fragment.ManaFragmentActivity"></activity> -->
-        <!--<activity android:name=".fragment.LoginActivity"></activity>-->
+         <activity android:name=".henCoder.CustomViewActivity"></activity>
+         <activity android:name=".others.LoadBigBitmapActivity"></activity>
+         <activity android:name=".others.OkHttpTestActivity"></activity>
+         <activity android:name=".henCoder.ScalableImageActivity"></activity>
+         <activity android:name=".test.TestActivity"></activity>
+         <activity android:name=".henCoder.MutilPointActivity"></activity>
+         <activity android:name=".others.RxJava2TestActivity"></activity>
+         <activity android:name=".others.MultipleStatusActivity"></activity>
+         <activity android:name=".others.AutoFillSMSActivity"></activity>
+         <activity android:name=".others.PermissionActivity"></activity>
+         <activity android:name=".others.MediaPermissionActivity" />
+         <!--<activity android:name=".fragment.FragmentMainActivity" /> -->
+         <activity android:name=".fragment.ManaFragmentActivity"></activity>
+         <activity android:name=".fragment.LoginActivity"></activity>
+        <activity android:name=".fragment.FragmentStateActivity"></activity>
     </application>
 
 </manifest>

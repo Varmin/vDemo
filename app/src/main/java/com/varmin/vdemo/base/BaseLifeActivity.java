@@ -1,6 +1,7 @@
 package com.varmin.vdemo.base;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -11,11 +12,18 @@ import android.util.Log;
  * 文件描述：
  */
 public class BaseLifeActivity extends AppCompatActivity {
-    public static String TAG = "BaseLifeActivity";
+    public String TAG = "BaseLifeActivity";
     private boolean mIsLog = true;
-    public boolean isLog(boolean isLog) {
+    private boolean mIsAll = false;
+    public void isLog(boolean isLog) {
+        isLog(isLog, true);
+    }
+    public void isAll(boolean isAll) {
+        isLog(true, isAll);
+    }
+    public void isLog(boolean isLog, boolean isAll) {
         this.mIsLog = isLog;
-        return mIsLog;
+        this.mIsAll = isAll;
     }
 
     @Override
@@ -24,41 +32,70 @@ public class BaseLifeActivity extends AppCompatActivity {
         if (mIsLog) Log.d(TAG, "onCreate: ----------------begin");
         super.onCreate(savedInstanceState);
         TAG = getClass().getSimpleName();
-        if (mIsLog) Log.d(TAG, "onCreate: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onCreate: ----------------end");
     }
 
     @Override
     protected void onStart() {
         if (mIsLog) Log.d(TAG, "onStart: ----------------begin");
         super.onStart();
-        if (mIsLog) Log.d(TAG, "onStart: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onStart: ----------------end");
+    }
+
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        if (mIsLog) Log.w(TAG, "onRestoreInstanceState: ----------------begin1");
+        super.onRestoreInstanceState(savedInstanceState);
+        if (mIsLog && mIsAll) Log.w(TAG, "onRestoreInstanceState: ----------------end1");
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
+        if (mIsLog) Log.w(TAG, "onRestoreInstanceState: ----------------begin2");
+        super.onRestoreInstanceState(savedInstanceState, persistentState);
+        if (mIsLog && mIsAll) Log.w(TAG, "onRestoreInstanceState: ----------------end2");
     }
 
     @Override
     protected void onResume() {
         if (mIsLog) Log.d(TAG, "onResume: ----------------begin");
         super.onResume();
-        if (mIsLog) Log.d(TAG, "onResume: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onResume: ----------------end");
     }
 
     @Override
     protected void onPause() {
         if (mIsLog) Log.d(TAG, "onPause: ----------------begin");
         super.onPause();
-        if (mIsLog) Log.d(TAG, "onPause: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onPause: ----------------end");
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        if (mIsLog) Log.w(TAG, "onSaveInstanceState: ----------------begin1");
+        super.onSaveInstanceState(outState);
+        if (mIsLog && mIsAll) Log.w(TAG, "onSaveInstanceState: ----------------end1");
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        if (mIsLog) Log.w(TAG, "onSaveInstanceState: ----------------begin2");
+        super.onSaveInstanceState(outState, outPersistentState);
+        if (mIsLog && mIsAll) Log.w(TAG, "onSaveInstanceState: ----------------end2");
     }
 
     @Override
     protected void onStop() {
         if (mIsLog) Log.d(TAG, "onStop: ----------------begin");
         super.onStop();
-        if (mIsLog) Log.d(TAG, "onStop: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onStop: ----------------end");
     }
 
     @Override
     protected void onDestroy() {
         if (mIsLog) Log.d(TAG, "onDestroy: ----------------begin");
         super.onDestroy();
-        if (mIsLog) Log.d(TAG, "onDestroy: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onDestroy: ----------------end");
     }
 }

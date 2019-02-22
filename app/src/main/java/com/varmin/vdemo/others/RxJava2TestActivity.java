@@ -16,6 +16,7 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 
 public class RxJava2TestActivity extends BaseActivity {
@@ -35,68 +36,66 @@ public class RxJava2TestActivity extends BaseActivity {
     }
 
     private void run() {
-        Observable
-        .create(new ObservableOnSubscribe<Integer>() {
-            @Override
-            public void subscribe(ObservableEmitter<Integer> e) throws Exception {
-                Log.d(TAG, "subscribe: ");
-                Log.d(TAG, "subscribe: next-1");
-                e.onNext(1);
-                Log.d(TAG, "subscribe: next-2");
-                e.onNext(2);
-                Log.d(TAG, "subscribe: next-3");
-                e.onNext(3);
-                //Log.d(TAG, "subscribe: onComplete");
-                //e.onComplete();
-                Log.d(TAG, "subscribe: next-4");
-                e.onNext(4);
-                Log.d(TAG, "subscribe: next-5");
-                e.onNext(5);
-            }
-        })
-        .map(new Function<Integer, String>() {
-            @Override
-            public String apply(Integer integer) throws Exception {
-                return "this value is "+integer;
-            }
-        })
-        .flatMap(new Function<String, ObservableSource<String>>() {
-            @Override
-            public ObservableSource<String> apply(String s) throws Exception {
-                final List<String> list = new ArrayList<>();
-                for (int i = 0; i < 3; i++) {
-                    s += "_"+i;
-                    list.add(s);
-                }
-                return Observable.fromIterable(list).delay(10, TimeUnit.MILLISECONDS);
-            }
-        })
-        .subscribe(new Observer<String>() {
-            private Disposable mDisposable;
+         Observable.create(new ObservableOnSubscribe<Integer>() {
+             @Override
+             public void subscribe(ObservableEmitter<Integer> e) throws Exception {
+                 Log.d(TAG, "subscribe: emit=1");
+                 e.onNext(1);
+                 Log.d(TAG, "subscribe: emit=2");
+                 e.onNext(2);
+                 Log.d(TAG, "subscribe: emit=complete");
+                 e.onComplete();
+                 Log.d(TAG, "subscribe: emit=3");
+                 e.onNext(3);
 
-            @Override
-            public void onSubscribe(Disposable d) {
-                Log.d(TAG, "onSubscribe: ");
-                this.mDisposable = d;
-            }
+             }
+         }).map(new Function<Integer, String>() {
+             @Override
+             public String apply(Integer integer) throws Exception {
+                 return "this value is" + integer;
+             }
+         }).flatMap(new Function<String, ObservableSource<String>>() {
+             @Override
+             public ObservableSource<String> apply(String s) throws Exception {
+                 List<String> list = new ArrayList<>();
+                 for (int i = 0; i < 3; i++) {
+                     s += "_"+i;
+                     list.add(s);
+                 }
+                 Log.d(TAG, "apply: flatMap="+s);
+                 return Observable.fromIterable(list).delay(500, TimeUnit.SECONDS);
+             }
+         }).concatMap(new Function<String, ObservableSource<String>>() {
+             @Override
+             public ObservableSource<String> apply(String s) throws Exception {
+                 List<String> list = new ArrayList<>();
+                 for (int i = 5; i < 7; i++) {
+                     s += "_"+i;
+                     list.add(s);
+                 }
+                 Log.d(TAG, "apply: concatMap="+s);
+                 return Observable.fromIterable(list).delay(500, TimeUnit.SECONDS);
+             }
+         }).subscribe(new Observer<String>() {
+             @Override
+             public void onSubscribe(Disposable d) {
+                 Log.d(TAG, "onSubscribe: ");
+             }
 
-            @Override
-            public void onNext(String value) {
-                Log.d(TAG, "onNext: "+value);
-                if (value.contains("is 2")) {
-                    //mDisposable.dispose();
-                }
-            }
+             @Override
+             public void onNext(String value) {
+                 Log.d(TAG, "onNext: value="+value);
+             }
 
-            @Override
-            public void onError(Throwable e) {
-                Log.d(TAG, "onError: ");
-            }
+             @Override
+             public void onError(Throwable e) {
+                 Log.d(TAG, "onError: "+e.toString());
+             }
 
-            @Override
-            public void onComplete() {
-                Log.d(TAG, "onComplete: ");
-            }
-        });
+             @Override
+             public void onComplete() {
+                 Log.d(TAG, "onComplete: ");
+             }
+         });
     }
 }

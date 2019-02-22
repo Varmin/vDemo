@@ -17,7 +17,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 /**
- * 返回事件处理（返回键、View返回按钮）、Fragment打开另一个、过渡动画、Fragment传参、输入框焦点（抢返回事件）
+ * 返回事件处理（返回键、View返回按钮）、Fragment打开另一个、过渡动画、Fragment传参
  * 登录-手机号-验证码-设置密码、昵称信息（返回回到手机号界面）- 登录界面自动填写昵称、手机号和密码
  * <p>
  * 1. 填写手机号、验证码：返回到上一个页面； 设置密码：返回到发送验证码页面
@@ -138,4 +138,5 @@ public class LoginActivity extends BaseActivity implements Fragment_2.JumpTypeLi
         getFragStatus();
         super.onBackPressed();
     }
+
 }

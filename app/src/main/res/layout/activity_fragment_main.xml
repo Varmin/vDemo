@@ -10,11 +10,16 @@
     <Button
         android:id="@+id/add_remove"
         style="@style/base_button"
-        android:text="add/remove"
+        android:text="add/remove/show/pop等"
         />
     <Button
         android:id="@+id/adapter"
         style="@style/base_button"
-        android:text="adapter"
+        android:text="login多Fragment模块"
+        />
+    <Button
+        android:id="@+id/state"
+        style="@style/base_button"
+        android:text="Fragment 状态保存恢复"
         />
 </LinearLayout>

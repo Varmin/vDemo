@@ -15,6 +15,19 @@ public class Fragment_1 extends BaseLifeFragment {
     @BindView(R.id.tv_fg_1)
     TextView tvFg1;
     private TransArgumentsListener mTransArgusListener;
+    private String args;
+
+    @Override
+    public void parseArguments() {
+        args = null;
+        Bundle bundle = getArguments();
+        if (bundle != null) {
+            args = getArguments().getString("args");
+        }
+        if (TextUtils.isEmpty(args)) {
+            args = getTag();
+        }
+    }
 
     @Override
     public int getLayoutId() {
@@ -23,14 +36,6 @@ public class Fragment_1 extends BaseLifeFragment {
 
     @Override
     public void initView(View mView) {
-        String args = null;
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            args = getArguments().getString("args");
-        }
-        if (TextUtils.isEmpty(args)) {
-            args = getTag();
-        }
         tvFg1.setText(args);
     }
 
@@ -61,6 +66,8 @@ public class Fragment_1 extends BaseLifeFragment {
          */
         this.mTransArgusListener = (TransArgumentsListener)context;
     }
+
+
 
     public void setText(String str){
         tvFg1.setText(str);

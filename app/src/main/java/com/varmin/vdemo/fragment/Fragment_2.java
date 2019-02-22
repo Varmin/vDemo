@@ -1,7 +1,9 @@
 package com.varmin.vdemo.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -42,6 +44,13 @@ public class Fragment_2 extends BaseLifeFragment {
     }
 
     @Override
+    public void parseArguments() {
+        Bundle bundle = getArguments();
+        args = bundle.getString("args");
+        type = bundle.getString("type");
+    }
+
+    @Override
     public int getLayoutId() {
         return R.layout.fragment_2;
     }
@@ -53,12 +62,12 @@ public class Fragment_2 extends BaseLifeFragment {
         jumpListener = (JumpTypeListener) context;
     }
 
+
     @Override
     public void initView(View mView) {
-        Bundle bundle = getArguments();
-        if (bundle != null) {
-            args = bundle.getString("args");
-            type = bundle.getString("type");
+
+        if (!TextUtils.isEmpty(type)) {
+
             switch (type) {
                 case TYPE_PHONE:
                     etInput.setText("10022000000");
@@ -120,7 +129,6 @@ public class Fragment_2 extends BaseLifeFragment {
                 ((TextView)getMActivity().findViewById(R.id.tv_title)).setText("请完成注册啊喂");
                 break;
             case TYPE_SECURITY:
-
                 break;
             case TYPE_PASSWORD:
                 //通知了Fragment，并拦截了Activity的处理
@@ -135,6 +143,5 @@ public class Fragment_2 extends BaseLifeFragment {
     public interface JumpTypeListener {
         void jump(String type, String args);
     }
-
 
 }

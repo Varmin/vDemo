@@ -32,11 +32,12 @@ public abstract class BaseActivity extends BaseLifeActivity {
         mUnBinder = ButterKnife.bind(this);
         mActivity = this;
         initData();
+        initData(savedInstanceState);
     }
 
-    protected void initData() {
+    protected void initData(@Nullable Bundle savedInstanceState) { }
 
-    }
+    protected void initData() {}
 
     protected abstract int getLayoutId();
 
@@ -56,13 +57,21 @@ public abstract class BaseActivity extends BaseLifeActivity {
 
     //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>---Fragment信息---begin--->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     public void getFragStatus(){
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                getFragmentList();
-                getFragmentBackStackList();
-            }
-        }, 500);
+        getFragStatus(true);
+    }
+    public void getFragStatus(boolean isDelay){
+        if (isDelay) {
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    getFragmentList();
+                    getFragmentBackStackList();
+                }
+            }, 500);
+        }else {
+            getFragmentList();
+            getFragmentBackStackList();
+        }
     }
     public void getFragmentList() {
         List<Fragment> fragments = getSupportFragmentManager().getFragments();
@@ -76,7 +85,7 @@ public abstract class BaseActivity extends BaseLifeActivity {
         Log.d(TAG, "getBackStackList: size="+bsCount);
         for (int i = 0; i < bsCount; i++) {
             FragmentManager.BackStackEntry entry = getSupportFragmentManager().getBackStackEntryAt(i);
-            Log.d(TAG, "getBackStackList: "+entry.getName()+", "+entry.getBreadCrumbTitle());
+            Log.d(TAG, "getBackStackList: "+entry.getName()+", id="+entry.getId());
         }
     }
     //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<---Fragment信息---end---<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
