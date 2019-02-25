@@ -17,13 +17,12 @@ import butterknife.Unbinder;
 
 public abstract class BaseLifeFragment extends Fragment {
     public String TAG = "BaseLifeFragment";
-    private boolean mIsLog = false;
+    private boolean mIsLog = true;
     private boolean mIsAll = false;
     private Context mContext;
     private FragmentActivity mActivity;
     private Unbinder unbinder;
-    //是否处理返回按键
-    private boolean mBackHandle;
+
 
     public void isLog(boolean isLog) {
         isLog(isLog, true);
@@ -65,6 +64,7 @@ public abstract class BaseLifeFragment extends Fragment {
         View mView = inflater.inflate(getLayoutId(), container, false);
         unbinder = ButterKnife.bind(this, mView);
         initView(mView);
+        initData(savedInstanceState);
         return mView;
     }
 
@@ -86,7 +86,10 @@ public abstract class BaseLifeFragment extends Fragment {
     }
 
 
-
+    /**
+     * 并不属于声明周期
+     * View的恢复，不是Fragment的恢复
+     */
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         if (mIsLog) Log.w(TAG, "onViewStateRestored: ----------------begin");
@@ -154,6 +157,7 @@ public abstract class BaseLifeFragment extends Fragment {
     public abstract void parseArguments();
     public abstract int getLayoutId();
     public abstract void initView(View mView);
+    public void initData(Bundle savedInstanceState){}
 
     public Context getMContext() {
         return mContext;
@@ -163,8 +167,4 @@ public abstract class BaseLifeFragment extends Fragment {
         return mActivity;
     }
 
-    public void setBackHandle(boolean isHandle){
-        this.mBackHandle = isHandle;
-    }
-    public boolean getBackHandle(){return mBackHandle;}
 }

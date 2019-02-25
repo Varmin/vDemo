@@ -4,8 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context=".fragment.FragmentStateActivity">
-
+    <EditText
+        android:id="@+id/et_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="activity_default_info"/>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -14,12 +20,18 @@
             android:id="@+id/fl_state_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/base_app_bg"
             />
-        <TextView
-            android:id="@+id/tv_state_info"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_alignParentBottom="true"/>
+            android:layout_height="wrap_content"
+            android:minHeight="60dp"
+            android:layout_alignParentBottom="true">
+            <TextView
+                android:id="@+id/tv_state_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </ScrollView>
     </RelativeLayout>
 
     <LinearLayout
@@ -42,5 +54,18 @@
             android:id="@+id/btn_state_go"
             style="@style/base_button_hor"
             android:text="跳转" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ToggleButton
+            android:id="@+id/tbtn_save_toggle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:textOff="关闭_resume_value4_save"
+            android:textOn="打开_resume_value4_save"/>
+
+
     </LinearLayout>
 </LinearLayout>

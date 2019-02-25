@@ -6,11 +6,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 import com.varmin.vdemo.R;
+import com.varmin.vdemo.base.BaseFragment;
 import com.varmin.vdemo.base.BaseLifeFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class Fragment_1 extends BaseLifeFragment {
+public class Fragment_1 extends BaseFragment {
 
     @BindView(R.id.tv_fg_1)
     TextView tvFg1;

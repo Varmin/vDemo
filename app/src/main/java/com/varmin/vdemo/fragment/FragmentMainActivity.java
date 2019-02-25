@@ -21,7 +21,7 @@ public class FragmentMainActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.add_remove, R.id.adapter, R.id.state})
+    @OnClick({R.id.add_remove, R.id.adapter, R.id.state, R.id.cover})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.add_remove:
@@ -34,7 +34,9 @@ public class FragmentMainActivity extends BaseActivity {
                 Intent intent = new Intent(mActivity, FragmentStateActivity.class);
                 intent.putExtra("value", "varmin");
                 startActivity(intent);
-                //Utils.startActivity(mActivity, TestActivity.class);
+                break;
+            case R.id.cover:
+                Utils.startActivity(mActivity, FragmentCoverActivity.class);
                 break;
         }
     }

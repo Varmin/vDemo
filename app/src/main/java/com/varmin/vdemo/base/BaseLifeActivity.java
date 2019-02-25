@@ -43,6 +43,9 @@ public class BaseLifeActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * 并不属于生命周期
+     */
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         if (mIsLog) Log.w(TAG, "onRestoreInstanceState: ----------------begin1");
@@ -50,6 +53,9 @@ public class BaseLifeActivity extends AppCompatActivity {
         if (mIsLog && mIsAll) Log.w(TAG, "onRestoreInstanceState: ----------------end1");
     }
 
+    /**
+     * TODO 未调用
+     */
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
         if (mIsLog) Log.w(TAG, "onRestoreInstanceState: ----------------begin2");
@@ -71,6 +77,16 @@ public class BaseLifeActivity extends AppCompatActivity {
         if (mIsLog && mIsAll) Log.d(TAG, "onPause: ----------------end");
     }
 
+    /**
+     * 1，super保存：View树状态
+     * 2，未经自己允许，存在被杀死的可能性时调用，主动finish不调用
+     *      A-->B：入栈不在最上层
+     *      home：
+     *      屏幕方向：
+     *      配置修改、语言设置、设置不保留活动...
+     * 3，调用onSave并不一定会调用onRestore
+     * 4，在onStop之前，onPause不确定
+     */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         if (mIsLog) Log.w(TAG, "onSaveInstanceState: ----------------begin1");
@@ -78,6 +94,9 @@ public class BaseLifeActivity extends AppCompatActivity {
         if (mIsLog && mIsAll) Log.w(TAG, "onSaveInstanceState: ----------------end1");
     }
 
+    /**
+     * TODO 未调用
+     */
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         if (mIsLog) Log.w(TAG, "onSaveInstanceState: ----------------begin2");

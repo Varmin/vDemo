@@ -37,21 +37,23 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/take_photo" />
         </provider>
-         <activity android:name=".henCoder.CustomViewActivity"></activity>
-         <activity android:name=".others.LoadBigBitmapActivity"></activity>
-         <activity android:name=".others.OkHttpTestActivity"></activity>
-         <activity android:name=".henCoder.ScalableImageActivity"></activity>
-         <activity android:name=".test.TestActivity"></activity>
-         <activity android:name=".henCoder.MutilPointActivity"></activity>
-         <activity android:name=".others.RxJava2TestActivity"></activity>
-         <activity android:name=".others.MultipleStatusActivity"></activity>
-         <activity android:name=".others.AutoFillSMSActivity"></activity>
-         <activity android:name=".others.PermissionActivity"></activity>
-         <activity android:name=".others.MediaPermissionActivity" />
-         <!--<activity android:name=".fragment.FragmentMainActivity" /> -->
-         <activity android:name=".fragment.ManaFragmentActivity"></activity>
-         <activity android:name=".fragment.LoginActivity"></activity>
-        <activity android:name=".fragment.FragmentStateActivity"></activity>
+
+        <activity android:name=".henCoder.CustomViewActivity" />
+        <activity android:name=".others.LoadBigBitmapActivity" />
+        <activity android:name=".others.OkHttpTestActivity" />
+        <activity android:name=".henCoder.ScalableImageActivity" />
+        <activity android:name=".test.TestActivity" />
+        <activity android:name=".henCoder.MutilPointActivity" />
+        <activity android:name=".others.RxJava2TestActivity" />
+        <activity android:name=".others.MultipleStatusActivity" />
+        <activity android:name=".others.AutoFillSMSActivity" />
+        <activity android:name=".others.PermissionActivity" />
+        <activity android:name=".others.MediaPermissionActivity" />
+        <!-- <activity android:name=".fragment.FragmentMainActivity" /> -->
+        <activity android:name=".fragment.ManaFragmentActivity" />
+        <activity android:name=".fragment.LoginActivity" />
+        <activity android:name=".fragment.FragmentStateActivity" />
+        <activity android:name=".fragment.FragmentCoverActivity"></activity>
     </application>
 
 </manifest>

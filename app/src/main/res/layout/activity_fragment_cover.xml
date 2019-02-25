@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.FragmentCoverActivity">
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_cover_add"
+            style="@style/base_button_hor"
+            android:text="add"/>
+        <Button
+            android:id="@+id/btn_cover_show"
+            style="@style/base_button_hor"
+            android:text="show"/>
+        <Button
+            android:id="@+id/btn_cover_hide"
+            style="@style/base_button_hor"
+            android:text="hide"/>
+
+    </LinearLayout>
+</LinearLayout>

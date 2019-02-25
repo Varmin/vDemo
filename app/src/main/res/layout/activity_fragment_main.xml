@@ -22,4 +22,9 @@
         style="@style/base_button"
         android:text="Fragment 状态保存恢复"
         />
+    <Button
+        android:id="@+id/cover"
+        style="@style/base_button"
+        android:text="Fragment 重叠"
+        />
 </LinearLayout>

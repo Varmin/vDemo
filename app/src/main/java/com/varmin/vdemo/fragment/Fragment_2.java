@@ -11,11 +11,12 @@ import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.varmin.vdemo.R;
+import com.varmin.vdemo.base.BaseFragment;
 import com.varmin.vdemo.base.BaseLifeFragment;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class Fragment_2 extends BaseLifeFragment {
+public class Fragment_2 extends BaseFragment {
     public static final String TYPE_PHONE = "type_phone";
     public static final String TYPE_SECURITY = "type_security";
     public static final String TYPE_PASSWORD = "type_password";
