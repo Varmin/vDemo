@@ -7,25 +7,48 @@
     android:orientation="vertical"
     tools:context=".fragment.FragmentCoverActivity">
 
-    <fragment
+    <FrameLayout
+        android:id="@+id/fl_conver_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/base_app_bg"
         android:layout_weight="1"/>
-    <LinearLayout
+    <RadioGroup
+        android:id="@+id/rg_cover"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/rb_cover_1"
+            android:text="1"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/rb_cover_2"
+            android:text="2"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/rb_cover_3"
+            android:text="3"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <RadioButton
+            android:id="@+id/rb_cover_4"
+            android:text="4"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
         <Button
-            android:id="@+id/btn_cover_add"
+            android:id="@+id/btn_cover_jump"
             style="@style/base_button_hor"
-            android:text="add"/>
-        <Button
-            android:id="@+id/btn_cover_show"
-            style="@style/base_button_hor"
-            android:text="show"/>
-        <Button
-            android:id="@+id/btn_cover_hide"
-            style="@style/base_button_hor"
-            android:text="hide"/>
+            android:text="跳转"/>
+    </RadioGroup>
 
-    </LinearLayout>
 </LinearLayout>

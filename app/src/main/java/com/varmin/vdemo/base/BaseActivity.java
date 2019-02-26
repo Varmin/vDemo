@@ -63,40 +63,47 @@ public abstract class BaseActivity extends BaseLifeActivity {
         getFragStatus(true);
     }
     public void getFragStatus(boolean isDelay){
+        getFragStatus(isDelay, false);
+    }
+    public void getFragStatus(boolean isDelay, final boolean isMoreInfo){
         if (isDelay) {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    getFragmentList();
+                    Log.e(TAG, "run: isDely");
+                    getFragmentList(isMoreInfo);
                     getFragmentBackStackList();
                 }
             }, 500);
         }else {
-            getFragmentList();
+            getFragmentList(isMoreInfo);
             getFragmentBackStackList();
         }
     }
-    public String getFragmentList() {
+    public String getFragmentList() {return getFragmentList(false);}
+    public String getFragmentList(boolean isMoreInfo) {
         StringBuilder builder = new StringBuilder();
         List<Fragment> fragments = getSupportFragmentManager().getFragments();
-        Log.d(TAG, "getFragList: " + fragments.size());
-        builder.append("fragList: "+fragments.size());
+        builder.append("\nfrag_List: "+fragments.size());
         for (Fragment fragment : fragments) {
-            Log.d(TAG, "getFragList: " + fragment.getTag());
             builder.append("\n").append(fragment.getTag()+", id="+fragment.getId());
+            if (isMoreInfo) {
+                builder.append(", isAdd="+fragment.isAdded()+", isHiden="+fragment.isHidden()+
+                        ", isDetached="+fragment.isDetached()+", hasCode="+fragment.hashCode());
+            }
         }
+        Log.d(TAG, "getFragmentList: "+builder.toString());
         return builder.toString();
     }
     public String getFragmentBackStackList() {
         StringBuilder builder = new StringBuilder();
         int bsCount = getSupportFragmentManager().getBackStackEntryCount();
-        Log.d(TAG, "getBackStackList: size="+bsCount);
-        builder.append("stackList: "+bsCount);
+        builder.append("\nstack_List: "+bsCount);
         for (int i = 0; i < bsCount; i++) {
             FragmentManager.BackStackEntry entry = getSupportFragmentManager().getBackStackEntryAt(i);
-            Log.d(TAG, "getBackStackList: "+entry.getName()+", id="+entry.getId());
             builder.append("\n").append(entry.getName()+", id="+entry.getId());
         }
+        Log.d(TAG, "getFragmentBackStackList: "+builder.toString());
         return builder.toString();
     }
     //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<---Fragment信息---end---<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<

@@ -21,7 +21,7 @@ public class FragmentMainActivity extends BaseActivity {
     }
 
 
-    @OnClick({R.id.add_remove, R.id.adapter, R.id.state, R.id.cover})
+    @OnClick({R.id.add_remove, R.id.adapter, R.id.state, R.id.cover, R.id.cover_adapter})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.add_remove:
@@ -37,6 +37,9 @@ public class FragmentMainActivity extends BaseActivity {
                 break;
             case R.id.cover:
                 Utils.startActivity(mActivity, FragmentCoverActivity.class);
+                break;
+            case R.id.cover_adapter:
+
                 break;
         }
     }

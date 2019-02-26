@@ -62,10 +62,10 @@ public class Fragment_1 extends BaseFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        /**
-         * Fragment传递参数给Activity
-         */
-        this.mTransArgusListener = (TransArgumentsListener)context;
+        //Fragment传递参数给Activity
+        try{
+            this.mTransArgusListener = (TransArgumentsListener)context;
+        }catch (Exception e){}
     }
 
 
