@@ -1,7 +1,6 @@
 package com.varmin.vdemo.fragment;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -62,40 +61,49 @@ public class FragmentCoverActivity extends BaseActivity {
                 Fragment fragment = null;
                 switch (checkedId) {
                     case R.id.rb_cover_1:
+                        //fragment1 = (Fragment_1) getSupportFragmentManager().findFragmentByTag("tag_"+Fragment_1.class.getSimpleName());
                         if (fragment1 == null) {
                             fragment1 = Fragment_1.newInstance();
+                            Log.e(TAG, "onCheckedChanged: new-----------1");
                         }
                         fragment = fragment1;
                         break;
                     case R.id.rb_cover_2:
+                        //fragment2 = (StateFragment_1)getSupportFragmentManager().findFragmentByTag("tag_"+StateFragment_1.class.getSimpleName());
                         if (fragment2 == null) {
                             fragment2 = new StateFragment_1();
+                            Log.e(TAG, "onCheckedChanged: new -----------State_1");
                         }
                         fragment = fragment2;
                         break;
                     case R.id.rb_cover_3:
+                        //fragment3 = (StateFragment_2)getSupportFragmentManager().findFragmentByTag("tag_"+StateFragment_2.class.getSimpleName());
                         if (fragment3 == null) {
                             fragment3 = new StateFragment_2();
+                            Log.e(TAG, "onCheckedChanged: new -----------State_2");
                         }
                         fragment = fragment3;
                         break;
                     case R.id.rb_cover_4:
+                        //fragment4 = (StateFragment_3)getSupportFragmentManager().findFragmentByTag("tag_"+StateFragment_3.class.getSimpleName());
                         if (fragment4 == null) {
                             fragment4 = new StateFragment_3();
+                            Log.e(TAG, "onCheckedChanged: new -----------State_3");
                         }
                         fragment = fragment4;
                         break;
                 }
-                Log.d(TAG, "onCheckedChanged: "+fragment.isAdded()+", "+fragment.isHidden());
+                Log.d(TAG, "onCheckedChanged: "+fragment.getClass().getSimpleName()+", iaAdd="+fragment.isAdded()+", isHiden="+fragment.isHidden());
                 FragmentTransaction trans = getSupportFragmentManager().beginTransaction();
                 if (!fragment.isAdded()) {
                     trans.add(R.id.fl_conver_container, fragment, "tag_"+fragment.getClass().getSimpleName());
-                    trans.addToBackStack("stack_"+fragment.getClass().getSimpleName());
+                    //trans.addToBackStack("stack_"+fragment.getClass().getSimpleName());
                 }
                 if (fragment.isHidden()) {
                     trans.show(fragment);
                 }
-                trans.commit();
+                trans.commitNow();
+
 
                 List<Fragment> frgs = getSupportFragmentManager().getFragments();
                 for (Fragment frg : frgs) {
@@ -111,7 +119,7 @@ public class FragmentCoverActivity extends BaseActivity {
                     }
                 }
                 //trans.commitAllowingStateLoss();
-                getFragStatus(true, true);
+                getFragStatus(false, true);
             }
         });
     }

@@ -3,6 +3,7 @@ package com.varmin.vdemo.fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import com.varmin.vdemo.R;
@@ -19,7 +20,7 @@ public class Fragment_1 extends BaseFragment {
     private String args;
 
     @Override
-    public void parseArguments() {
+    public void parseArguments(Bundle arg) {
         args = null;
         Bundle bundle = getArguments();
         if (bundle != null) {

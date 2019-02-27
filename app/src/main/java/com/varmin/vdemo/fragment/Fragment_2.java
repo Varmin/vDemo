@@ -45,7 +45,7 @@ public class Fragment_2 extends BaseFragment {
     }
 
     @Override
-    public void parseArguments() {
+    public void parseArguments(Bundle arg) {
         Bundle bundle = getArguments();
         args = bundle.getString("args");
         type = bundle.getString("type");

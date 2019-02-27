@@ -16,12 +16,9 @@ public class StateFragment_1 extends BaseFragment {
     @BindView(R.id.et_frag_info)
     EditText editText;
 
-    public StateFragment_1(){
-        Log.d(TAG, "StateFragment_1: constructor");
-    }
 
     @Override
-    public void parseArguments() {
+    public void parseArguments(Bundle args) {
 
     }
 

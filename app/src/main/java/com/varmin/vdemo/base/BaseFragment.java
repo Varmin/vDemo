@@ -2,11 +2,15 @@ package com.varmin.vdemo.base;
 
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 public abstract class BaseFragment extends BaseLifeFragment {
 
+    public BaseFragment(){
+        Log.w(TAG, "BaseFragment: constructor="+getClass().getSimpleName()+", "+hashCode());
+    }
     private BaseLifeViewModel mViewModel;
     //是否处理返回按键
     private boolean mBackHandle;

@@ -45,7 +45,6 @@ public abstract class BaseLifeFragment extends Fragment {
         super.onAttach(context);
         this.mContext = context;
         this.mActivity = getActivity();
-        parseArguments();
         if (mIsLog && mIsAll) Log.d(TAG, "onAttach: ----------------end");
     }
 
@@ -63,8 +62,14 @@ public abstract class BaseLifeFragment extends Fragment {
         if (mIsLog) Log.d(TAG, "onCreateView: ----------------");
         View mView = inflater.inflate(getLayoutId(), container, false);
         unbinder = ButterKnife.bind(this, mView);
+
         initView(mView);
+
+        Bundle bundle = getArguments();
+        if (bundle == null) bundle = new Bundle();
+        parseArguments(bundle);
         initData(savedInstanceState);
+
         return mView;
     }
 
@@ -92,7 +97,7 @@ public abstract class BaseLifeFragment extends Fragment {
      */
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
-        if (mIsLog) Log.w(TAG, "onViewStateRestored: ----------------begin");
+        if (mIsLog) Log.w(TAG, "onViewStateRestored: ----------------begin, "+hashCode());
         super.onViewStateRestored(savedInstanceState);
         if (mIsLog && mIsAll) Log.w(TAG, "onViewStateRestored: ----------------end");
     }
@@ -154,9 +159,9 @@ public abstract class BaseLifeFragment extends Fragment {
     }
 
     //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<---life---end---<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    public abstract void parseArguments();
+    public abstract void parseArguments(Bundle args);
     public abstract int getLayoutId();
-    public abstract void initView(View mView);
+    public void initView(View mView){}
     public void initData(Bundle savedInstanceState){}
 
     public Context getMContext() {
