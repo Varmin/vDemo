@@ -1,6 +1,7 @@
 package com.varmin.vdemo.base;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -10,8 +11,6 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 
-import com.varmin.vdemo.R;
-
 /**
  * Created by HuangYang
  * on 2018/10/26  17:09.
@@ -20,9 +19,24 @@ import com.varmin.vdemo.R;
 
 public class Utils {
     private static final String TAG = "Utils";
-    public static void startActivity(Activity activity, Class clazz){
-        Intent intent = new Intent(activity, clazz);
-        activity.startActivity(intent);
+    private static AppActivityLifecycleCallback mActivityLifecyleCallback;
+
+    public static void init(Application app){
+        mActivityLifecyleCallback = new AppActivityLifecycleCallback();
+        app.registerActivityLifecycleCallbacks(mActivityLifecyleCallback);
+    }
+
+
+    public static void startActivity(Class clazz){
+        Context context = mActivityLifecyleCallback.getTopActivity();
+        if (context == null) {
+            context = App.getApplication();
+        }
+        startActivity(context, clazz);
+    }
+    public static void startActivity(Context context, Class clazz){
+        Intent intent = new Intent(context, clazz);
+        context.startActivity(intent);
     }
 
     public static float dp2px(float dp) {
@@ -57,4 +71,6 @@ public class Utils {
         }
         return View.MeasureSpec.getSize(measureSpec);
     }
+
+
 }

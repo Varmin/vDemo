@@ -67,6 +67,7 @@ dependencies {
     implementation(project(':CommonLib:lib_1')) {
         exclude group: 'com.android.support'
     }
+
     implementation(project(':CommonLibs:MultipleStatusView')) {
         exclude group: 'com.android.support'
     }

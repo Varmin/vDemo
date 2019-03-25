@@ -19,7 +19,8 @@ import butterknife.OnClick;
  * Created by HuangYang
  * on 2019/2/26  7:20 PM.
  * 文件描述：Fragment销毁重建。
- *
+ * onCreate中自动实例化fragment，生命周期中我们自己添加fragment，多以重叠。
+ * ：找到系统帮我们实例化的fragment，没有的话再自己创建。
  */
 public class CoverShowHidenActivity extends BaseActivity {
     @BindView(R.id.tb_toogle)

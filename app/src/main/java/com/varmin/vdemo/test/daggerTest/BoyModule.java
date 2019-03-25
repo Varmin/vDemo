@@ -1,4 +1,4 @@
-package com.varmin.vdemo.test.daggerTest.boy;
+package com.varmin.vdemo.test.daggerTest;
 
 import dagger.Module;
 import dagger.Provides;
@@ -11,7 +11,7 @@ import dagger.Provides;
 @Module
 public class BoyModule {
     @Provides
-    Girl provideGirl(){
-        return new Girl();
+    Boy provideBoy(){
+        return new Boy();
     }
 }

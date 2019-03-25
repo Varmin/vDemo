@@ -11,7 +11,7 @@ import dagger.Provides;
 @Module
 public class ZaiNanModule {
     @Provides
-    Girl provideNoodle(){
+    Girl providesGirl(){
         return new Girl();
     }
 }

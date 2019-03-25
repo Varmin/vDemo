@@ -30,6 +30,6 @@
     <Button
         android:id="@+id/cover_adapter"
         style="@style/base_button"
-        android:text="Fragment adapter重叠"
+        android:text="测试"
         />
 </LinearLayout>

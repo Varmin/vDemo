@@ -1,5 +1,7 @@
 package com.varmin.vdemo.test.daggerTest;
 
+import android.util.Log;
+
 import javax.inject.Inject;
 
 /**
@@ -8,24 +10,32 @@ import javax.inject.Inject;
  * 文件描述：
  */
 public class ZaiNan {
-    @Inject
-    Game game;
-
+    private static final String TAG = "ZaiNan";
+    //inject
     @Inject
     BaoZi baoZi;
-
-    /*@Inject
-    BaoMiHua baoMiHua;*/
+    //provides
+    @Inject
+    Girl girl;
+    //依赖的Component
+    @Inject
+    BaoMiHua baoMiHua;
+    //继承的Component
+//    @Inject
+//    Boy boy;
 
     @Inject
     public ZaiNan(){}
 
     @Override
     public String toString() {
-        String content = game.toString()
-                +"-"+baoZi.toString()
-                //+"-"+baoMiHua.toString()
-                ;
-        return content;
+        StringBuilder str = new StringBuilder();
+        str.append(baoZi.toString()).append("\n")
+                .append(girl.toString()).append("\n")
+                .append(baoMiHua.toString()).append("\n")
+//                .append(boy.toString())
+        ;
+        Log.d(TAG, "toString: "+str.toString());
+        return str.toString();
     }
 }

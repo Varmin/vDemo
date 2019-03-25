@@ -25,6 +25,7 @@ import butterknife.OnClick;
 
 /**
  * 销毁重建
+ * value4的值
  */
 public class FragmentStateActivity extends BaseActivity {
 

@@ -13,8 +13,10 @@ import android.util.Log;
  */
 public class BaseLifeActivity extends AppCompatActivity {
     public String TAG = "BaseLifeActivity";
-    private boolean mIsLog = true;
+    private boolean mIsLog = false;
     private boolean mIsAll = false;
+    private boolean isTag;
+
     public void isLog(boolean isLog) {
         isLog(isLog, true);
     }
@@ -25,21 +27,31 @@ public class BaseLifeActivity extends AppCompatActivity {
         this.mIsLog = isLog;
         this.mIsAll = isAll;
     }
+    public void setTAG(String tag){
+        isTag = true;
+        this.TAG = tag;
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        TAG = getClass().getSimpleName();
+        if (!isTag) TAG = getClass().getSimpleName();
         if (mIsLog) Log.d(TAG, "onCreate: ----------------begin");
         super.onCreate(savedInstanceState);
-        TAG = getClass().getSimpleName();
-        if (mIsLog && mIsAll) Log.d(TAG, "onCreate: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onCreate: -------end");
+    }
+
+    @Override
+    protected void onRestart() {
+        if (mIsLog) Log.d(TAG, "onRestart: ----------------begin");
+        super.onRestart();
+        if (mIsLog && mIsAll) Log.d(TAG, "onRestart: --------end");
     }
 
     @Override
     protected void onStart() {
         if (mIsLog) Log.d(TAG, "onStart: ----------------begin");
         super.onStart();
-        if (mIsLog && mIsAll) Log.d(TAG, "onStart: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onStart: -------end");
     }
 
 
@@ -50,7 +62,7 @@ public class BaseLifeActivity extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         if (mIsLog) Log.w(TAG, "onRestoreInstanceState: ----------------begin1");
         super.onRestoreInstanceState(savedInstanceState);
-        if (mIsLog && mIsAll) Log.w(TAG, "onRestoreInstanceState: ----------------end1");
+        if (mIsLog && mIsAll) Log.w(TAG, "onRestoreInstanceState: -------end1");
     }
 
     /**
@@ -60,21 +72,21 @@ public class BaseLifeActivity extends AppCompatActivity {
     public void onRestoreInstanceState(Bundle savedInstanceState, PersistableBundle persistentState) {
         if (mIsLog) Log.w(TAG, "onRestoreInstanceState: ----------------begin2");
         super.onRestoreInstanceState(savedInstanceState, persistentState);
-        if (mIsLog && mIsAll) Log.w(TAG, "onRestoreInstanceState: ----------------end2");
+        if (mIsLog && mIsAll) Log.w(TAG, "onRestoreInstanceState: -------end2");
     }
 
     @Override
     protected void onResume() {
         if (mIsLog) Log.d(TAG, "onResume: ----------------begin");
         super.onResume();
-        if (mIsLog && mIsAll) Log.d(TAG, "onResume: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onResume: -------end");
     }
 
     @Override
     protected void onPause() {
         if (mIsLog) Log.d(TAG, "onPause: ----------------begin");
         super.onPause();
-        if (mIsLog && mIsAll) Log.d(TAG, "onPause: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onPause: -------end");
     }
 
     /**
@@ -91,7 +103,7 @@ public class BaseLifeActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle outState) {
         if (mIsLog) Log.w(TAG, "onSaveInstanceState: ----------------begin1");
         super.onSaveInstanceState(outState);
-        if (mIsLog && mIsAll) Log.w(TAG, "onSaveInstanceState: ----------------end1");
+        if (mIsLog && mIsAll) Log.w(TAG, "onSaveInstanceState: -------end1");
     }
 
     /**
@@ -101,20 +113,20 @@ public class BaseLifeActivity extends AppCompatActivity {
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         if (mIsLog) Log.w(TAG, "onSaveInstanceState: ----------------begin2");
         super.onSaveInstanceState(outState, outPersistentState);
-        if (mIsLog && mIsAll) Log.w(TAG, "onSaveInstanceState: ----------------end2");
+        if (mIsLog && mIsAll) Log.w(TAG, "onSaveInstanceState: -------end2");
     }
 
     @Override
     protected void onStop() {
         if (mIsLog) Log.d(TAG, "onStop: ----------------begin");
         super.onStop();
-        if (mIsLog && mIsAll) Log.d(TAG, "onStop: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onStop: -------end");
     }
 
     @Override
     protected void onDestroy() {
         if (mIsLog) Log.d(TAG, "onDestroy: ----------------begin");
         super.onDestroy();
-        if (mIsLog && mIsAll) Log.d(TAG, "onDestroy: ----------------end");
+        if (mIsLog && mIsAll) Log.d(TAG, "onDestroy: -------end");
     }
 }

@@ -1,6 +1,8 @@
 package com.varmin.vdemo.fragment;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -20,7 +22,8 @@ import java.util.List;
 import butterknife.BindView;
 
 /**
- * 重叠问题
+ * Created by HuangYang
+ * on 2019/2/27  11:07 AM.
  */
 public class FragmentCoverActivity extends BaseActivity {
 
@@ -48,8 +51,6 @@ public class FragmentCoverActivity extends BaseActivity {
                 Utils.startActivity(mActivity, TestActivity.class);
             }
         });
-
-
         initListener();
         ((RadioButton)rgCover.findViewById(R.id.rb_cover_1)).setChecked(true);
     }
@@ -123,19 +124,4 @@ public class FragmentCoverActivity extends BaseActivity {
             }
         });
     }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        Log.e(TAG, "onRestoreInstanceState: ----------");
-        getFragStatus(false, true);
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        Log.e(TAG, "onSaveInstanceState: -------------");
-        getFragStatus(false, true);
-    }
-
 }

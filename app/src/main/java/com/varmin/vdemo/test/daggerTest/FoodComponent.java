@@ -1,8 +1,5 @@
 package com.varmin.vdemo.test.daggerTest;
 
-import com.varmin.vdemo.test.daggerTest.boy.Boy;
-import com.varmin.vdemo.test.daggerTest.boy.BoyComponent;
-
 import dagger.Component;
 
 /**
@@ -10,10 +7,7 @@ import dagger.Component;
  * on 2018/11/12  17:56.
  * 文件描述：
  */
-@Component(modules = FoodModule.class, dependencies = BoyComponent.class)
+@Component(modules = FoodModule.class)
 public interface FoodComponent {
-    //BaoMiHua getBaoMiHua();
-    //ZaiNan2 privateUse();
-    Boy boy();
-
+    BaoMiHua getBaoMiHua();
 }

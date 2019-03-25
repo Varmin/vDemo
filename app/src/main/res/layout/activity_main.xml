@@ -12,4 +12,20 @@
         android:id="@+id/btn_main_2"
         style="@style/base_button"
         android:text="加载大图片"/>
+    <Button
+        android:id="@+id/btn_main_3"
+        style="@style/base_button"
+        android:text="Fragment"/>
+    <Button
+        android:id="@+id/btn_main_4"
+        style="@style/base_button"
+        android:text="RecyclerView"/>
+    <Button
+        android:id="@+id/btn_main_5"
+        style="@style/base_button"
+        android:text="Activity"/>
+    <Button
+        android:id="@+id/btn_main_6"
+        style="@style/base_button"
+        android:text="RecyclerView"/>
 </LinearLayout>

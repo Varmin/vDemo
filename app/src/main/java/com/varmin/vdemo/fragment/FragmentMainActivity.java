@@ -36,10 +36,10 @@ public class FragmentMainActivity extends BaseActivity {
                 startActivity(intent);
                 break;
             case R.id.cover:
-                Utils.startActivity(mActivity, FragmentCoverActivity.class);
+                Utils.startActivity(mActivity, CoverShowHidenActivity.class);
                 break;
             case R.id.cover_adapter:
-
+                Utils.startActivity(mActivity, FragmentCoverActivity.class);
                 break;
         }
     }

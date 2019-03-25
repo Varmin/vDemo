@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activitys.ActivityMainActivity">
+
+    <Button
+        android:id="@+id/btn_act_life"
+        style="@style/base_button"
+        android:text="生命周期" />
+
+    <Button
+        android:id="@+id/btn_act_mode"
+        style="@style/base_button"
+        android:text="启动模式" />
+
+    <Button
+        android:id="@+id/btn_act_filter"
+        style="@style/base_button"
+        android:text="隐式启动" />
+</LinearLayout>

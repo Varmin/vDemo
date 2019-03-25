@@ -5,6 +5,7 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="white">#FFFFFF</color>
+    <color name="white_trans">#ddFFFFFF</color>
     <color name="black">#000000</color>
     <!--base-->
     <color name="base_text_black_color">#000000</color>
@@ -20,6 +21,7 @@
     <color name="base_gray_line">#dddddd</color>
     <color name="base_view_bg">#f0eff5</color>
     <drawable name="base_gray_bg">#f0eff5</drawable>
+    <drawable name="base_gray_bg_trans">#aaf0eff5</drawable>
     <color name="base_red">#FF4081</color>
     <color name="base_text_red_app">@color/base_app_bg</color>
     <!--translate-->
