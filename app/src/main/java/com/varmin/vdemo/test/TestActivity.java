@@ -47,10 +47,5 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        /**
-         * Looper: ThreadLocal
-         * Thread: ThreadLocalMap （key：threadLocal, value: value）
-         * ThreadLocal: 从Thread中的map中存取
-         */
     }
 }

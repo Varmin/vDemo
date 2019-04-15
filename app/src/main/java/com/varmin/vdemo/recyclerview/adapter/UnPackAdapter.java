@@ -89,4 +89,8 @@ public class UnPackAdapter extends RecyclerView.Adapter<UnPackAdapter.UnPackView
             tvRight = itemView.findViewById(R.id.tv_common_recycler_right);
         }
     }
+
+    public List<String> getData(){
+        return mDatas;
+    }
 }

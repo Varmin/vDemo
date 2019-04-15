@@ -40,7 +40,7 @@
 
         <activity android:name=".henCoder.CustomViewActivity" />
         <activity android:name=".others.LoadBigBitmapActivity" />
-        <activity android:name=".others.OkHttpTestActivity" />
+        <activity android:name=".net.OkHttpTestActivity" />
         <activity android:name=".henCoder.ScalableImageActivity" />
          <activity android:name=".test.TestActivity" />
         <activity android:name=".henCoder.MutilPointActivity" />
