@@ -44,7 +44,9 @@ public class OkHttpTestActivity extends BaseActivity {
 
 
     public void getCommonList(){
-        OkHttpClient okClient = new OkHttpClient();
+        OkHttpClient okClient = new OkHttpClient.Builder()
+                .build();
+        Log.d(TAG, "getCommonList: "+okClient.cache());
         Request request = new Request.Builder()
                 .url(Api.COMMON_LIST)
                 .build();
@@ -60,5 +62,6 @@ public class OkHttpTestActivity extends BaseActivity {
                 Log.d(TAG, "onResponse: "+response);
             }
         });
+
     }
 }
