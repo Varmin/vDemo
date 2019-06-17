@@ -1,7 +1,20 @@
-include ':app', ':JavaPro',':CommonLib',':CommonLibs'
+/*include ':app', ':JavaPro',':CommonLib'//,':CommonLibs'
 project(':CommonLib').projectDir = new File('/Users/varmin/code/common_libs/CommonLib')
-include ':CommonLib:lib_1'
-project(':CommonLibs').projectDir = new File('/Users/varmin/ptg/common/CommonLibs')
+include ':CommonLib:lib_1'*/
+
+
+/*project(':CommonLibs').projectDir = new File('/Users/varmin/ptg/common/CommonLibs')
 include ':CommonLibs:ApplyPermissions'
-include ':CommonLibs:MultipleStatusView'
-include ':CommonLibs:Common'
+include ':CommonLibs:picture_library'*/
+//include ':CommonLibs:Common'
+
+
+include ':app', ':JavaPro',':lib_1'//,':CommonLibs'
+project(':lib_1').projectDir = new File('/Users/varmin/code/common_libs/CommonLib/lib_1')
+
+/*project(':CommonLibs').projectDir = new File('/Users/varmin/ptg/common/CommonLibs/')
+include ':CommonLibs:ApplyPermissions'*/
+/*include ':CommonLibs:Common'
+include ':CommonLibs:picture_library'
+include ':CommonLibs:ucrop'*/
+

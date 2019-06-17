@@ -10,7 +10,7 @@
         <attr name="round_radius" format="dimension"/>
         <attr name="is_bound" format="boolean"/>
     </declare-styleable>
-    <declare-styleable name="ScalableImageView">
-
+    <declare-styleable name="JiKePraiseView">
+        <attr name="praise_num" format="integer"/>
     </declare-styleable>
 </resources>

@@ -8,19 +8,6 @@
         </compositeConfiguration>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="modules">
-          <set>
-            <option value="$PROJECT_DIR$/../../../../common_libs/CommonLib" />
-            <option value="$PROJECT_DIR$/../../../../common_libs/CommonLib/lib_1" />
-            <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/JavaPro" />
-            <option value="$PROJECT_DIR$/app" />
-            <option value="$USER_HOME$/ptg/common/CommonLibs" />
-            <option value="$USER_HOME$/ptg/common/CommonLibs/ApplyPermissions" />
-            <option value="$USER_HOME$/ptg/common/CommonLibs/Common" />
-            <option value="$USER_HOME$/ptg/common/CommonLibs/MultipleStatusView" />
-          </set>
-        </option>
         <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>

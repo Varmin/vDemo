@@ -2,16 +2,10 @@ package com.varmin.vdemo.fragment;
 
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import com.varmin.vdemo.R;
 import com.varmin.vdemo.base.BaseActivity;
 import com.varmin.vdemo.base.Utils;
-import com.varmin.vdemo.test.TestActivity;
-
-import junit.framework.Test;
-
 import butterknife.OnClick;
 
 public class FragmentMainActivity extends BaseActivity {

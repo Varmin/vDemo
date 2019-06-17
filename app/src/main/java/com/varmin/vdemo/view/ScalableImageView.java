@@ -62,7 +62,6 @@ public class ScalableImageView extends View implements GestureDetector.OnGesture
         initView();
     }
     private void initAttrs(AttributeSet attrs) {
-        TypedArray typedArray = mContext.obtainStyledAttributes(attrs, R.styleable.ScalableImageView);
 
     }
 

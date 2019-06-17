@@ -3,15 +3,7 @@ package com.varmin.vdemo.test;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-
-import com.google.gson.Gson;
 import com.varmin.vdemo.R;
-import com.varmin.vdemo.test.daggerTest.DaggerFoodComponent;
-import com.varmin.vdemo.test.daggerTest.DaggerZaiNanComponent;
-import com.varmin.vdemo.test.daggerTest.FoodComponent;
-
-import java.lang.reflect.ParameterizedType;
-import java.lang.reflect.Type;
 
 public class TestActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String TAG = "TestActivity";
@@ -29,19 +21,6 @@ public class TestActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    public void setListener(Listener<Person> listener){
-
-    }
-    public class Person{}
-    public abstract class Listener<T>{
-        public void set(){
-            Type[] types = this.getClass().getGenericInterfaces();
-            Type[] params = ((ParameterizedType) types[0]).getActualTypeArguments();
-            Class<T> reponseClass = (Class) params[0];
-            T a = new Gson().fromJson("", reponseClass);
-        }
-        void get(T t){};
-    }
 
 
 

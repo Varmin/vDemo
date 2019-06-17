@@ -18,6 +18,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".viewsActivity.JiKePraiseActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name">
@@ -26,8 +27,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!-- <activity android:name=".MainActivity" /> -->
+        </activity> <!-- <activity android:name=".MainActivity" /> -->
         <provider
             android:name="android.support.v4.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -42,28 +42,26 @@
         <activity android:name=".others.LoadBigBitmapActivity" />
         <activity android:name=".net.OkHttpTestActivity" />
         <activity android:name=".henCoder.ScalableImageActivity" />
-         <activity android:name=".test.TestActivity" />
+        <activity android:name=".test.TestActivity" />
         <activity android:name=".henCoder.MutilPointActivity" />
         <activity android:name=".others.RxJava2TestActivity" />
         <activity android:name=".others.MultipleStatusActivity" />
         <activity android:name=".others.AutoFillSMSActivity" />
-        <activity android:name=".others.PermissionActivity" />
-        <activity android:name=".others.MediaPermissionActivity" />
-         <activity android:name=".fragment.FragmentMainActivity" />
+        <activity android:name=".fragment.FragmentMainActivity" />
         <activity android:name=".fragment.ManaFragmentActivity" />
         <activity android:name=".fragment.LoginActivity" />
         <activity android:name=".fragment.FragmentStateActivity" />
         <activity android:name=".fragment.FragmentCoverActivity" />
         <activity android:name=".fragment.CoverShowHidenActivity" />
         <activity android:name=".recyclerview.RecyclerViewMainActivity" />
-         <activity android:name=".activitys.ActivityMainActivity"/>
-        <activity android:name=".activitys.LifeActivity_1"
+        <activity android:name=".activitys.ActivityMainActivity" />
+        <activity
+            android:name=".activitys.LifeActivity_1"
             android:exported="true"
             android:launchMode="singleTask"
-            android:taskAffinity="com.varmin.vdemo2"
-            />
+            android:taskAffinity="com.varmin.vdemo2" />
         <activity android:name=".activitys.LifeActivity_2" />
-        <activity android:name=".recyclerview.UnPackActivity"></activity>
+        <activity android:name=".recyclerview.UnPackActivity" />
     </application>
 
 </manifest>
