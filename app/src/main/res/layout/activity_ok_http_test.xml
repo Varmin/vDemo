@@ -13,10 +13,17 @@
     <Button
         android:id="@+id/btn_get"
         style="@style/base_button"
-        android:text="get" />
-
+        android:text="okhttp_get" />
     <Button
         android:id="@+id/btn_post"
         style="@style/base_button"
-        android:text="post" />
+        android:text="okhttp_post" />
+    <Button
+        android:id="@+id/btn_retrofit_get"
+        style="@style/base_button"
+        android:text="retrofit_get" />
+    <Button
+        android:id="@+id/btn_retrofit_post"
+        style="@style/base_button"
+        android:text="retrofit_post" />
 </LinearLayout>

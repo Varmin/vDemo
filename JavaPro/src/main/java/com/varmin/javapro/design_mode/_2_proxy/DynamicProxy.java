@@ -7,9 +7,9 @@ import java.lang.reflect.Proxy;
 /**
  * Created by HuangYang
  * on 2018/12/2  18:06.
- * 文件描述：
+ * 文件描述：动态代理
  */
-public class BuyProxy implements InvocationHandler {
+public class DynamicProxy implements InvocationHandler {
 
     private Object mObjectProxy;
 
@@ -34,9 +34,9 @@ public class BuyProxy implements InvocationHandler {
      */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        System.out.println("代购开始~");
+        System.out.println("动态代理开始~");
         Object result = method.invoke(mObjectProxy, args);
-        System.out.println("代购完成，回国发货了。");
+        System.out.println("动态代理结束。");
         return result;
     }
 }

@@ -1,7 +1,7 @@
 package com.varmin.javapro.design_mode._2_proxy;
 
 import com.varmin.javapro.base.BaseObj;
-import com.varmin.javapro.design_mode._2_proxy.subject.BuyIphone;
+import com.varmin.javapro.design_mode._2_proxy.subject.UseMac;
 import com.varmin.javapro.design_mode._2_proxy.subject.BuyMac;
 import com.varmin.javapro.design_mode._2_proxy.subject.Buy;
 
@@ -13,16 +13,22 @@ import com.varmin.javapro.design_mode._2_proxy.subject.Buy;
 public class ProxyMain implements BaseObj {
     @Override
     public void run() {
+        /**
+         * 静态代理：一对一
+         */
         new BuyMacProxy().bug();
 
-        BuyProxy buyProxy1 = new BuyProxy();
+        /**
+         * 动态代理：一对多，可以是不同类型的代理对象
+         */
         BuyMac bm = new BuyMac();
-        Buy buyMac = (Buy) buyProxy1.getProxyInstance(bm);
-        buyMac.bug();
+        DynamicProxy bugProxy = new DynamicProxy();
+        Buy buy = (Buy) bugProxy.getProxyInstance(bm);
+        buy.bug();
 
-        BuyProxy buyProxy2 = new BuyProxy();
-        BuyIphone bi = new BuyIphone();
-        Buy buyIphone = (Buy) buyProxy2.getProxyInstance(bi);
-        buyIphone.bug();
+        UseMac um = new UseMac();
+        DynamicProxy useProxy = new DynamicProxy();
+        UseMac useMac = (UseMac) useProxy.getProxyInstance(um);
+        useMac.use();
     }
 }

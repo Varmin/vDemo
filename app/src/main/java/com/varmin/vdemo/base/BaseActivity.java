@@ -31,7 +31,7 @@ public abstract class BaseActivity extends BaseLifeActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
+        if (getLayoutId() != 0) setContentView(getLayoutId());
         mUnBinder = ButterKnife.bind(this);
         mActivity = this;
         initData();

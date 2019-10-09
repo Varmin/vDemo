@@ -6,7 +6,7 @@ import com.varmin.javapro.design_mode._2_proxy.subject.BuyMac;
 /**
  * Created by HuangYang
  * on 2018/12/2  18:26.
- * 文件描述：
+ * 文件描述：静态代理
  */
 public class BuyMacProxy implements Buy {
     @Override

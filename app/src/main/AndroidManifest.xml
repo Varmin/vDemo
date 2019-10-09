@@ -18,9 +18,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".viewsActivity.JiKePraiseActivity"></activity>
+        <activity android:name=".henCoder.FlowLayoutActivity"></activity>
+        <activity android:name=".glide.GlideBaseActivity" />
+        <activity android:name=".glide.GlideMainActivity" />
+        <activity android:name=".rx.RxJavaMainActivity" />
+        <activity android:name=".viewsActivity.JiKePraiseActivity" />
+        <!--<activity android:name=".test.TestActivity" />-->
         <activity
-            android:name=".MainActivity"
+            android:name=".test.TestActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,7 +47,7 @@
         <activity android:name=".others.LoadBigBitmapActivity" />
         <activity android:name=".net.OkHttpTestActivity" />
         <activity android:name=".henCoder.ScalableImageActivity" />
-        <activity android:name=".test.TestActivity" />
+
         <activity android:name=".henCoder.MutilPointActivity" />
         <activity android:name=".others.RxJava2TestActivity" />
         <activity android:name=".others.MultipleStatusActivity" />

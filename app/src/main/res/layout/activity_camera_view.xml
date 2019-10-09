@@ -39,7 +39,7 @@
         android:text="TAG 206974 我的 ggjjffpp"
         android:textSize="30sp"
         android:textColor="@color/base_text_black_666666"
-        app:round_radius="5dp"
+        app:round_radius="1dp"
         app:is_bound="false"
         />
     <com.varmin.vdemo.view.LabelLayout

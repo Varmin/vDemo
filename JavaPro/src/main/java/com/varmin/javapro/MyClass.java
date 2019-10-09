@@ -1,7 +1,5 @@
 package com.varmin.javapro;
 
-import com.varmin.javapro.design_mode._1_factory.FactoryTestMain;
-import com.varmin.javapro.design_mode._2_proxy.ProxyMain;
 import com.varmin.javapro.design_mode._3_build.BuilderMain;
 
 public class MyClass {
@@ -10,7 +8,7 @@ public class MyClass {
 
         //new FactoryTestMain().run();
         //new ProxyMain().run();
-        new BuilderMain().run();
+        //new BuilderMain().run();
 
 
         System.out.println("------------JavaPro over!!!------------");

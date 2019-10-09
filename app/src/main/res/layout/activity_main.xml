@@ -5,6 +5,10 @@
     android:orientation="vertical"
     tools:context="com.varmin.vdemo.MainActivity">
     <Button
+        android:id="@+id/btn_main_7"
+        style="@style/base_button"
+        android:text="网络"/>
+    <Button
         android:id="@+id/btn_main_1"
         style="@style/base_button"
         android:text="HenCoder_View"/>

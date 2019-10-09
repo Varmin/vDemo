@@ -24,4 +24,12 @@
             style="@style/base_button_hor"
             android:text="remove"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btn_recycler_diff"
+            style="@style/base_button_hor"
+            android:text="Diff"/>
+    </LinearLayout>
 </LinearLayout>

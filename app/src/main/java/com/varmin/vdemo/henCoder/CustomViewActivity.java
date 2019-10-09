@@ -27,7 +27,7 @@ public class CustomViewActivity extends BaseActivity {
     protected void initData() {
         super.initData();
 
-        String[] labels = new String[]{"标签","标签","标签","标签","标签","标签","标签","标签","标签","标签","标签"
+        String[] labels = new String[]{"标签标签标签标签标签标签","标签","标签","标签","标签","标签","标签","标签","标签","标签","标签"
                 ,"标签","标签","标签","标签","标签","标签","标签","标签","标签","标签","标签"};
         for (int i = 0; i < labels.length; i++) {
             labels[i] += (i);

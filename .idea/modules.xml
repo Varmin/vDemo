@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/CommonLibs/CommonLibs.iml" filepath="$PROJECT_DIR$/CommonLibs/CommonLibs.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavaPro/JavaPro.iml" filepath="$PROJECT_DIR$/JavaPro/JavaPro.iml" />
       <module fileurl="file://$PROJECT_DIR$/VDemo.iml" filepath="$PROJECT_DIR$/VDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />

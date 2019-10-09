@@ -17,14 +17,16 @@ public class RecyclerViewMainActivity extends BaseActivity {
         return R.layout.activity_recycler_view_main;
     }
 
-
-    @OnClick({R.id.btn_recycler_no_pack, R.id.btn_recycler_pack})
+    @OnClick({R.id.btn_recycler_no_pack, R.id.btn_recycler_pack,
+    R.id.btn_recycler_diff})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_recycler_no_pack:
                 Utils.startActivity(UnPackActivity.class);
                 break;
             case R.id.btn_recycler_pack:
+                break;
+            case R.id.btn_recycler_diff:
                 break;
         }
     }

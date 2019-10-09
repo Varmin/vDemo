@@ -1,0 +1,19 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.varmin.vdemo.MainActivity">
+    <Button
+        android:id="@+id/btn_rx_main_1"
+        style="@style/base_button"
+        android:text="map"/>
+    <Button
+        android:id="@+id/btn_rx_main_2"
+        style="@style/base_button"
+        android:text="zip"/>
+    <Button
+        android:id="@+id/btn_rx_main_3"
+        style="@style/base_button"
+        android:text="Flowable"/>
+</LinearLayout>

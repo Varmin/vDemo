@@ -53,12 +53,12 @@ dependencies {
     //RxJava
     implementation 'io.reactivex.rxjava2:rxjava:2.0.1'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
-    //OkHttp
     //implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     //Retrofit，已默认引用OKhttp
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava:2.5.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.14.1'
     //自动填写验证码
     implementation 'tech.michaelx.authcode:authcode:1.0.1'
     // 那么除了这种每次都exclude，还有什么办法？不是按最高的版本引入么，为什么会出现版本冲突？
@@ -68,13 +68,11 @@ dependencies {
 //    implementation(project(':CommonLib:lib_1')) {
 //        exclude group: 'com.android.support'
 //    }
-    /*implementation(project(':CommonLibs:ApplyPermissions')) {
-        exclude group: 'com.android.support'
-    }*/
-    /*implementation(project(':CommonLibs:Common')) {
-        exclude group: 'com.android.support'
-    }*/
-
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.14.1'
+//    implementation(project(':CommonLibs:ApplyPermissions')) {
+//        exclude group: 'com.android.support'
+//    }
     implementation project(path: ':lib_1')
+
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+
 }
